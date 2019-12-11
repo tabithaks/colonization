@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "COLONIZATION"
+author: "Tabitha Sugumar & Madeleine Georges"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
