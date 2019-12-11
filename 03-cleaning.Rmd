@@ -1,1 +1,129 @@
 # Data transformation
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(countrycode)
+library(foreign)
+library(readxl)
+library(tidyr)
+library(tidyverse)
+```
+
+Load the data
+```{r}
+coldata <- read.csv("Data/coldata110.csv")
+gdpdata <- read.csv("Data/UNGDP.csv")
+stateabs <- read.csv("Data/states2016.csv")
+indicators <- read_excel("Data/2018_all_indicators.xlsx",sheet = 1)
+```
+Cleaning Colonization Data and adding GDP/HDI/Gini indicators
+```{r}
+#Clean coldata
+coldata_clean <- coldata
+coldata_clean$Code <- countrycode(coldata$Name,origin='country.name',destination = 'iso3c')
+
+#Add in names (instead of codes of colonizing countries)
+stateabs <- read.csv("Data/states2016.csv")
+stateabs <- stateabs[,c("ccode", "statenme")] %>% distinct()
+coldata_clean <- merge(coldata_clean, stateabs, by.x = "ColRuler", by.y = "ccode", all.x = TRUE)
+coldata_clean$ColRulerCode <- countrycode(coldata_clean$statenme, origin = "country.name", destination = "iso3c")
+
+#reorder codes
+cols <- c("State","Name", "Code", "ColRuler","ColRulerCode", "statenme")
+coldata_clean <- coldata_clean[,c(cols, setdiff(names(coldata_clean), cols))]
+
+names(coldata_clean)[6] <- "ColRulerName"
+levels(coldata_clean$ColRulerName) <- c(levels(coldata_clean$ColRulerName), "Not Colonized")
+coldata_clean$ColRulerName[coldata_clean$ColRuler == -9] <- "Not Colonized"
+coldata_clean$ColRulerCode[coldata_clean$ColRuler == -9] <- "N/C"
+
+#Clean up countries without given codes
+coldata_clean <- coldata_clean[-c(8,9,11,12,13,14,15,16,17,18,20,27,28,30,31,32,89,91,132,173),]
+
+#Add in Kosovo's code manually since package didn't recognize it
+coldata_clean[coldata_clean$Name == "Kosovo", "Code"] = "RKS"
+
+#Give Yemen part colonized by Turkey the code for Yemen
+coldata_clean[coldata_clean$State == 678, "Code"] = "YEM"
+
+#Change name for Vietnam for clarity
+levels(coldata_clean$Name)[levels(coldata_clean$Name)=='Vietnam/Dem.Rep.Vietnam (North)'] <- 'Vietnam'
+
+#Add codes to gdpdata2017
+gdpdata$Code <- countrycode(gdpdata$Country.or.Area, origin = "country.name", destination = "iso3c")
+
+#Manually fixed unmatched values
+gdpdata[gdpdata$Country.or.Area == "Kosovo", "Code"] = "RKS"
+gdpdata[gdpdata$Country.or.Area == "Kingdom of Eswatini", "Code"] = "SWZ"
+
+#Create table merging coldata and gdp
+gdp <- gdpdata[c("Code","Value")]
+colgdpc <- merge(coldata_clean, gdp, by.x = "Code", by.y = "Code", all.x = TRUE)
+
+#Reorder Columns
+cols <- c("State","Name", "Code", "ColRuler","ColRulerCode", "ColRulerName", "Value")
+colgdpc <- colgdpc[,c(cols, setdiff(names(colgdpc), cols))]
+
+#Rename value column as GDPpc2017
+names(colgdpc)[7] <- "GDPpc17"
+
+#Get human capital index data and join
+#Source: http://hdr.undp.org/en/content/human-development-index-hdi
+hdi <- filter(indicators, indicator_id == 137506 | indicator_id == 138806)
+hdi <- hdi[,c("indicator_id", "iso3","2017")]
+hdi <- spread(hdi, "indicator_id", "2017")
+names(hdi)[2] <- "HDI17"
+names(hdi)[3] <- "IHDI17"
+
+colonialdata <- merge(colgdpc, hdi, by.x = "Code", by.y = "iso3", all.x = TRUE)
+
+#Get gini coefficient data and join
+#Source http://hdr.undp.org/en/content/human-development-index-hdi
+#id of gini coefficient = 67106
+
+gini <- filter(indicators, indicator_id == 67106)
+gini <- gini[,c("iso3","9999")]
+names(gini)[2] <- "Gini"
+
+colonialdata <- merge(colonialdata, gini, by.x = "Code", by.y = "iso3", all.x = TRUE)
+
+#Reorder columns
+cols <- c("State","Name", "Code", "ColRulerName", "GDPpc17", "HDI17", "IHDI17", "Gini")
+colonialdata <- colonialdata[,c(cols, setdiff(names(colonialdata), cols))]
+
+write.csv(colonialdata, file = "Data/colonialdata.csv", row.names=FALSE)
+```
+Notes:
+We examined and removed several countries from this dataset for a variety of reasons -- most of them are countries that no longer exist. Several were either small states that ended up merging into modern day Germany and Italy. Separating them is out of the scope of this analysis. We also removed references to North and South Vietnam since they were only separate during the war and also aren't relavant for this analysis.
+
+We removed Zanzibar, since Tanzania is included and Zanzibar is a part of Tanzania that doesn't have it's own iso3 code, in fact there are two different values for Tanzania in the GDP chart, but they are both listed as Tanzania, so it seemed to make the most sense to remove Zanzibar.
+
+We removed Czechoslovakia since both Czech Republic and Slovakia are listed here and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. For a similar reason we removed Austria-Hungary as well.
+
+Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.
+
+Get and clean Angus Maddison's data
+```{r}
+#Source: https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018
+#Get revised Maddison data
+Mad <- read_excel("Data/mpd2018.xlsx",sheet = 2)
+write.csv(Mad, file = "Data/Maddison.csv", row.names=FALSE)
+
+#Source: http://www.ggdc.net/maddison/oriindex.htm
+#Get and clean up Maddison's original data on GDP
+MadO <- read_excel("Data/mpdorig.xls", sheet = 3, skip = 2)
+names(MadO)[1] <- "year"
+MadO <- MadO[rowSums(is.na(MadO)) != ncol(MadO), ]
+write.csv(MadO, file = "Data/MaddisonGDP.csv", row.names=FALSE)
+
+#Get and clean Maddison data for England (We merged data from England and the UK since information was available for England for a longer period)
+MadEng <- read_excel("Data/mpd2018.xlsx", skip = 1, sheet = 8)
+England <- merge( filter(Mad, countrycode == "GBR")[,c("year", "cgdppc", "rgdpnapc")], MadEng[,c("year", "cgdppc_England", "rgdpnapc_England")], by.x = "year", by.y = "year", all = TRUE)
+England <- mutate(England, cgdp = ifelse(is.na(cgdppc), cgdppc_England, cgdppc ))
+England <- mutate(England, rgdp = ifelse(is.na(rgdpnapc), rgdpnapc_England, rgdpnapc ))
+write.csv(England, file = "Data/EnglandGDPpc.csv", row.names=FALSE)
+```
+The original Maddison dataset is the latest version from his original website, which included raw GDP rather than only per capita, it also went back a bit further. The other Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are more recent/probably account for more of the historical aspects. The links to the sources provide detailed documentation/explanation of the changes and significance.
+
+For the England data, information on the UK began around 1700, but there was data for England starting from 1200. I created an England dataset with a coloumn for both rgdpnapc and cgdppc which merged the information, if data existed for the UK it has that, otherwise it has data for England if it exists. It seemed a reasonable way to look at the change of GDP overtime in England/UK especially given that it's per capita, so an increase in population from encompassing more area would be accounted for.
