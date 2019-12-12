@@ -44,7 +44,7 @@ coldata_clean$ColRulerName[coldata_clean$ColRuler == -9] <- "Not Colonized"
 coldata_clean$ColRulerCode[coldata_clean$ColRuler == -9] <- "N/C"
 
 #Clean up countries without given codes
-coldata_clean <- coldata_clean[-c(8,9,11,12,13,14,15,16,17,18,20,27,28,30,31,32,89,91,132,173),]
+coldata_clean <- coldata_clean[-c(8,9,11,12,13,14,15,16,17,18,20,27,28,30,31,32,43,89,91,132,173),]
 
 #Add in Kosovo's code manually since package didn't recognize it
 coldata_clean[coldata_clean$Name == "Kosovo", "Code"] = "RKS"
