@@ -8,7 +8,7 @@ The Colonial History Data Set contains colonial information for over 200 countri
 
 ```{r echo=FALSE}
 coldata <- read.csv("Data/coldata110.csv")
-head(coldata)
+head(coldata,1)
 ```
 
 
@@ -44,5 +44,5 @@ This Dataset is a product of the Research from Ziltener, Patrick & Künzler, Dan
 
 ```{r echo=FALSE}
 transfo_raw <- read.csv("Data/Colonial_transformation_data.csv")
-head(transfo_raw)
+head(transfo_raw,1)
 ```

@@ -1,3 +1,9 @@
 # Interactive component
 
 
+"The Great Divergence" is a term coined to refer to the great economic growth of European Nations from the early 19th century to the mid-20th, with regards to other countries that Historians place on a similar economic footstep for centuries prior (China, India). A commonly posited interpretation links this to the European colonial empires around that time, and especially in the United Kingdom/India relationship this is a crucial timeframe to look at.
+
+We reused the Maddison dataset gdp per capita to plot this in a dynamic graph via plotly, to engage the audience and emphasis the great jump in values. Ideally, we would have plotted this starting centuries before to showcase how the lines remained constant, but we have uneven data points for all countries before roughly ~1820, and had trouble plotting the graphs if we included years were we don't have values for all countries. 
+
+[Click here to view the Great Divergence dynamic plot.](https://plot.ly/~mdlngeorges/5/#/)
+
