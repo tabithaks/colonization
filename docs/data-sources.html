@@ -24,7 +24,7 @@
 <meta name="author" content="Tabitha Sugumar &amp; Madeleine Georges" />
 
 
-<meta name="date" content="2019-12-11" />
+<meta name="date" content="2019-12-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,10 +70,32 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#the-icow-colonial-history-data-set"><i class="fa fa-check"></i><b>2.1</b> The ICOW Colonial History Data Set</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#indicators-gdp-gini-hdi"><i class="fa fa-check"></i><b>2.2</b> Indicators (GDP, Gini, HDI)</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-sources.html"><a href="data-sources.html#angus-maddison"><i class="fa fa-check"></i><b>2.2.1</b> Angus Maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#section"><i class="fa fa-check"></i><b>2.3</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#load-the-data"><i class="fa fa-check"></i><b>3.1</b> Load the data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#cleaning-colonization-data-and-adding-gdphdigini-indicators"><i class="fa fa-check"></i><b>3.2</b> Cleaning Colonization Data and adding GDP/HDI/Gini indicators</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#country-specific-cleaning"><i class="fa fa-check"></i><b>3.3</b> Country-specific cleaning</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#the-angus-maddison-dataset-for-gdp"><i class="fa fa-check"></i><b>3.4</b> The Angus Maddison dataset for GDP</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#factors-of-colonial-transformation"><i class="fa fa-check"></i><b>3.5</b> Factors of Colonial Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#insert-file-here-once-github-uploaded"><i class="fa fa-check"></i><b>4.1</b> INSERT FILE HERE ONCE GITHUB UPLOADED</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#indicators-by-colonizing-country"><i class="fa fa-check"></i><b>5.1</b> Indicators by Colonizing Country</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="results.html"><a href="results.html#average-gdp-gini-coefficient-and-human-development-index-by-colonized-country"><i class="fa fa-check"></i><b>5.1.1</b> Average GDP, Gini Coefficient, and Human Development Index by Colonized Country</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#gdp-by-years-colonized"><i class="fa fa-check"></i><b>5.2</b> GDP by years colonized</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#indicators-of-colonization"><i class="fa fa-check"></i><b>5.3</b> Indicators of Colonization</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="results.html"><a href="results.html#correlations-of-variables-covariance-matrixes"><i class="fa fa-check"></i><b>5.3.1</b> Correlations of variables (covariance matrixes)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -97,7 +119,68 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
+<div id="the-icow-colonial-history-data-set" class="section level2">
+<h2><span class="header-section-number">2.1</span> The ICOW Colonial History Data Set</h2>
+<p>Data can be found <a href="https://www.paulhensel.org/icowcol.html">here</a></p>
+<p>The Colonial History Data Set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended.</p>
+<pre><code>## [1] &quot;Variables of the Colonial History Data Set&quot;</code></pre>
+<pre><code>##  [1] &quot;State&quot;    &quot;Name&quot;     &quot;ColRuler&quot; &quot;IndFrom&quot;  &quot;IndDate&quot;  &quot;IndViol&quot; 
+##  [7] &quot;IndType&quot;  &quot;SecFrom&quot;  &quot;SecDate&quot;  &quot;SecViol&quot;  &quot;Into&quot;     &quot;IntoDate&quot;
+## [13] &quot;COWsys&quot;   &quot;GWsys&quot;    &quot;Notes&quot;</code></pre>
+</div>
+<div id="indicators-gdp-gini-hdi" class="section level2">
+<h2><span class="header-section-number">2.2</span> Indicators (GDP, Gini, HDI)</h2>
+<p>We obtained worldwide GDP per capita data in 2017. This dataset can be found <a href="https://databank.worldbank.org/home.aspx">here</a>.</p>
+<p>We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information <a href="http://hdr.undp.org/en/data">here</a>
+The actual download we used is a little difficult to find so the direct link is <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=2ahUKEwj92b7u7LDmAhWWVs0KHY5-Dy4QFjACegQIBRAC&amp;url=http%3A%2F%2Fhdr.undp.org%2Fsites%2Fdefault%2Ffiles%2F2018_all_indicators.xlsx&amp;usg=AOvVaw1X2alKbj6XdNRcUGJ_DD-E">here</a>
+Please note that this is a direct link to the download so only click on it if you would like to download a copy of the data.</p>
+<p>We pulled the most recent information we could find for each of these countries in an attempt to think about how colonization may have impacted what is going on in a country today. Of course the time period of colonization was extremely long and complicated, and about 70 years have passed since colonialism ended, so many other factors certainly have an impact. But this was the concept we were hoping to explore.</p>
+<p>per capita GDP 2017: Represents gross domestic product per capita in 2017.
+Gini Coefficient: Measurement of inequality, the higher the value, the more unequal the society. These measurements were taken between 2010-2017. There was only one measurement per country, but which year that measurement came from was unclear. We felt that given the span of colonialism, this was acceptable as a method to evaluate a country’s current status.</p>
+<p>HDI: Stands for human development index. A higher value represents a higher quality of life. Details regarding how this index is calculated and what it measures can be found <a href="http://hdr.undp.org/en/content/human-development-index-hdi">here</a></p>
+<div id="angus-maddison" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Angus Maddison</h3>
+<p>The dataset can be found <a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/">here</a></p>
+<p>This dataset consists of countries and their estimated per capita GDP’s overtime. This work is a continuation of that done by Angus Maddison. They provide two types of per capita GDP, one consistent with growthrates and another that ensured the comparative value of goods in a single year was consistent. We chose to make comparisons using measurement since it seemed more appropriate since we were interested in comparing per capita GDP, rather than growth rate. This decision was made based on the documentation provided on the website.</p>
+<p>We used this data to see if we could look at the economic impact of colonialism overtime and see any patterns. The difficulty of course, was the limitations of what data was available, its accuracy. Ideally we would have liked to look at the GDP for a few countries from prior to colonization, during colonization and after. The difficulty of that is the prior to colonization part, and some of the years during colonization – for the vast majority of countries information during this period is unavailable. This makes sense as the world looked very different now, and modern countries frequently didn’t exist. However, we did our best to use what we had to explore how the economic situation changed overtime.</p>
+</div>
+</div>
+<div id="section" class="section level2">
+<h2><span class="header-section-number">2.3</span> </h2>
+<p>Data can be found <a href="https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia">here</a></p>
+<p>This Dataset is a product of the Research from Ziltener, Patrick &amp; Künzler, Daniel &amp; Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683. It encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, “Colonial Rule” has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files.</p>
+<pre><code>## [1] &quot;Variables of the Colonial Transformations Data Set&quot;</code></pre>
+<pre><code>##  [1] &quot;Country.Code.World.Bank&quot;                                                         
+##  [2] &quot;Country.Name&quot;                                                                    
+##  [3] &quot;Main.colonial..motherland...source..Ziltener.KŸnzler&quot;                            
+##  [4] &quot;onset.of.colonialism..source..Ziltener.KŸnzler.2008&quot;                             
+##  [5] &quot;end.of.colonialism..source..Ziltener.KŸnzler.2008&quot;                               
+##  [6] &quot;COLYEARS&quot;                                                                        
+##  [7] &quot;Violent.Colonization..Wars.of.Defence.etc..Source..own.coding..cf..COW.Dataset..&quot;
+##  [8] &quot;Violent.Resistence..Revolts.etc...Source..own.coding..cf..COW.Dataset..0.non.V.&quot; 
+##  [9] &quot;Violent.Independence..Source..own.coding..cf..COW.Dataset..0.non.V..1.violence.&quot; 
+## [10] &quot;colonial.violence.total..Source..own.coding.&quot;                                    
+## [11] &quot;Form.of.Colonial.Domination..0..1..2..3..4..&quot;                                    
+## [12] &quot;Colonial.administration.historically.first.central.adminstration...0.no..1.yes.&quot; 
+## [13] &quot;ethnic.function.groups.used.by.colonial.power..0.no..1.little..2.extensive.&quot;     
+## [14] &quot;power.transfer.during.decolonization..0.long.term..planned..coordinated..1.short&quot;
+## [15] &quot;colonial.foreign.trade.policy..0.not.appl...1.open.door..2.preferential.tariffs.&quot;
+## [16] &quot;colonial.trade.concentration..source..Mitchell.2007..completed.&quot;                 
+## [17] &quot;colonial.investment.concentration..source..Kentor.Boswell.2003..completed.&quot;      
+## [18] &quot;colonial.investment.in.infrastructure..railways..roads..bridges..ports..irrigati&quot;
+## [19] &quot;plantations.during.colonial.period..0.no..1.little..2.extensive&quot;                 
+## [20] &quot;gold.silver.mining.during.colonial.period..0.no..1.little..2.extensive&quot;          
+## [21] &quot;mining.during.colonial.period..0.no..1.little..2.extensive&quot;                      
+## [22] &quot;foreign.presence..colonial.countries..during.colonial.period..0..1...1.1.2...2.2&quot;
+## [23] &quot;immigration.of.foreign.workers.during.colonial.period..0.no..1.little..2.extensi&quot;
+## [24] &quot;missionary.activities.during.colonial.period..0.no.not.appl...1...2...3...4..&quot;   
+## [25] &quot;colonial.borders.split.ethnic.groups..cut.traditional.space.of.close.interaction&quot;
+## [26] &quot;level.of.political.transformation..0.100.&quot;                                       
+## [27] &quot;level.of.economic.transformation..0.100.&quot;                                        
+## [28] &quot;level.of.social.transformation..0.100.&quot;                                          
+## [29] &quot;level.of.colonial.transformation..0.100.&quot;</code></pre>
 
+</div>
 </div>
             </section>
 

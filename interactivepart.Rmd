@@ -1,0 +1,93 @@
+---
+title: "animationtest"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+gdps = read.csv("Data/Maddison.csv")
+gdps <- gdps[c("country","year","cgdppc")]
+colnames(gdps)[3] <- "gdp"
+
+gdps <- gdps %>% filter(is.na(gdp) == FALSE, country %in% c("United Kingdom","India","Germany","France","China"))
+
+```
+
+
+```{r}
+gdps2 <- gdps %>% spread("country","gdp")
+head(gdps2)
+```
+
+
+```{r}
+gdps3 <- na.omit(gdps2)
+```
+
+```{r}
+
+gdps4 <- gather(gdps3,key="country",value="gdp",-year)
+head(gdps4)
+```
+
+
+```{r}
+library(plotly)
+Sys.setenv("plotly_username"="mdlngeorges")
+Sys.setenv("plotly_api_key"="rSFaKSa6nI4SaQ68BI4M")
+
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+
+d <- gdps4 %>%
+  accumulate_by(~year)
+
+p <- d %>%
+  plot_ly(
+    x = ~year, 
+    y = ~gdp,
+    split = ~country,
+    frame = ~frame, 
+    type = 'scatter',
+    mode = 'lines', 
+    line = list(simplyfy = F)
+  ) %>% 
+  layout(
+    xaxis = list(
+      title = "Year",
+      zeroline = F
+    ),
+    yaxis = list(
+      title = "GDP",
+      zeroline = F
+    )
+  ) %>% 
+  animation_opts(
+    frame = 100, 
+    transition = 0, 
+    redraw = FALSE
+  ) %>%
+  animation_slider(
+    hide = T
+    ) %>%
+  animation_button(
+    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+  )
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+chart_link = api_create(p, filename="finalproject_2")
+chart_link
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
