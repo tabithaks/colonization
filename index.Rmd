@@ -1,5 +1,5 @@
 --- 
-title: "COLONIZATION"
+title: "Visualizing Colonization"
 author: "Tabitha Sugumar & Madeleine Georges"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

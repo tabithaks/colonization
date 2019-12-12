@@ -1,11 +1,11 @@
 # Data transformation
 
-```{r setup}
-knitr::opts_chunk$set(echo = FALSE, warning=FALSE, eval=FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
 ```
 
 
-```{r warning=FALSE, echo=FALSE}
+```{r warning=FALSE, echo=FALSE, eval=FALSE}
 library(ggplot2)
 library(dplyr)
 library(countrycode)
@@ -19,7 +19,7 @@ library(extracat)
 
 
 ## Load the data
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 coldata <- read.csv("Data/raw/coldata110.csv")
 gdpdata <- read.csv("Data/raw/UNGDP.csv")
 stateabs <- read.csv("Data/raw/states2016.csv")
@@ -27,7 +27,7 @@ indicators <- read_excel("Data/raw/2018_all_indicators.xlsx",sheet = 1)
 ```
 
 ## Cleaning Colonization Data and adding GDP/HDI/Gini indicators
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 
 #Clean coldata
 coldata_clean <- coldata
@@ -117,7 +117,7 @@ Yemen had three variants, two of which were colonized by the UK, and the other w
 
 ## The Angus Maddison dataset for GDP
 
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 #Source: https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018
 #Get revised Maddison data
 Mad <- read_excel("Data/raw/mpd2018.xlsx",sheet = 2)
@@ -151,7 +151,7 @@ For the England data, information on the UK began around 1700, but there was dat
 
 The main concern here was to remain consistent in country notations. We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the columns for ease of use, as they were named after over 35-character-long strings that described the indicators and its range in great detail. The encoding can be found on our github and is specified in each relevant. One can remember that PT1/ET1/ST1 stand for Political/Economic/Social Transformation Indicator 1, and V stand for observed violence.
 
-```{r}
+```{r, eval=FALSE}
 transfo_raw <- read.csv("Data/raw/Colonial_transformation_data.csv")
 
 transformations <- transfo_raw
@@ -189,7 +189,7 @@ transformations$Code <- as.character(transformations$Code)
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 write.csv(transformations, file = "Data/clean/transformations.csv", row.names=FALSE)
 ```
 

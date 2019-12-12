@@ -184,105 +184,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Conclusion</h1>
-<p>Answers to the questions</p>
 <p>As we went on with our exploration, we felt narrowing the scope at the beginning of the project would have allowed us to investigate a specific relationship more closely, as there seemed to be no shortage of historical perspectives to look at. We found ourselves somewhat overwhelmed as to where to look more closely. But, narrowing it down also required going deeper in domain knowledge/specific history and that seemed to be outside the scope of this project.</p>
 <p>We were disappointed at times by not finding clearer “trends”, but one of the most important take-aways from this class was how easy it is to stretch and squeeze the data to make trends appear, and if we feel like we have to do so, then we might be looking to confirm our pre-existing assumptions instead of genuinely exploring the data.</p>
 <p>We were also confronted with the limitations of our data itself. We worked almost exclusively with man-made data, rather than empirical measurements. From the GDP to the indicators, all of our parameters, formula or assessment-based, included human decision and subsequently, bias. In addition, we wanted to look at how the data changed overtime, data which we often did not have, had in an unequal fashion for different observations, or the accuracy of which was very uncertain (the GDP data up to a certain year, for instance, was very approximate).</p>
 <p>With all of those caveats, the colonial datasets remain rich ressources that try to make sense, in a quantifiable way, of a very complex and time-spanning issue. We hope that our vizualizations contribute to that goal. While ‘inconclusive’, we feel we have learned a lot just by working with the data and getting a better sense of the factors historians might look at more extensively, and the issues they may face regarding quantitative support of their investigations.</p>
-
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">gdps =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Data/Maddison.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb66-2" title="2">gdps &lt;-<span class="st"> </span>gdps[<span class="kw">c</span>(<span class="st">&quot;country&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;cgdppc&quot;</span>)]</a>
-<a class="sourceLine" id="cb66-3" title="3"><span class="kw">colnames</span>(gdps)[<span class="dv">3</span>] &lt;-<span class="st"> &quot;gdp&quot;</span></a>
-<a class="sourceLine" id="cb66-4" title="4"></a>
-<a class="sourceLine" id="cb66-5" title="5">gdps &lt;-<span class="st"> </span>gdps <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(gdp) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>, country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;United Kingdom&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Germany&quot;</span>,<span class="st">&quot;France&quot;</span>,<span class="st">&quot;China&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">gdps2 &lt;-<span class="st"> </span>gdps <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(<span class="st">&quot;country&quot;</span>,<span class="st">&quot;gdp&quot;</span>)</a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="kw">head</span>(gdps2)</a></code></pre></div>
-<pre><code>##   year China France Germany India United Kingdom
-## 1    1    NA   1050      NA    NA             NA
-## 2 1000    NA     NA      NA    NA            759
-## 3 1280    NA   1053      NA    NA             NA
-## 4 1281    NA   1026      NA    NA             NA
-## 5 1282    NA    999      NA    NA             NA
-## 6 1283    NA    986      NA    NA             NA</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">gdps3 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(gdps2)</a></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">gdps4 &lt;-<span class="st"> </span><span class="kw">gather</span>(gdps3,<span class="dt">key=</span><span class="st">&quot;country&quot;</span>,<span class="dt">value=</span><span class="st">&quot;gdp&quot;</span>,<span class="op">-</span>year)</a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="kw">head</span>(gdps4)</a></code></pre></div>
-<pre><code>##   year country gdp
-## 1 1870   China 751
-## 2 1887   China 760
-## 3 1890   China 810
-## 4 1900   China 840
-## 5 1911   China 804
-## 6 1912   China 842</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">library</span>(plotly)</a></code></pre></div>
-<pre><code>## Warning: package &#39;plotly&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;plotly&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     last_plot</code></pre>
-<pre><code>## The following object is masked from &#39;package:stats&#39;:
-## 
-##     filter</code></pre>
-<pre><code>## The following object is masked from &#39;package:graphics&#39;:
-## 
-##     layout</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">Sys.setenv</span>(<span class="st">&quot;plotly_username&quot;</span>=<span class="st">&quot;mdlngeorges&quot;</span>)</a>
-<a class="sourceLine" id="cb78-2" title="2"><span class="kw">Sys.setenv</span>(<span class="st">&quot;plotly_api_key&quot;</span>=<span class="st">&quot;rSFaKSa6nI4SaQ68BI4M&quot;</span>)</a>
-<a class="sourceLine" id="cb78-3" title="3"></a>
-<a class="sourceLine" id="cb78-4" title="4">accumulate_by &lt;-<span class="st"> </span><span class="cf">function</span>(dat, var) {</a>
-<a class="sourceLine" id="cb78-5" title="5">  var &lt;-<span class="st"> </span>lazyeval<span class="op">::</span><span class="kw">f_eval</span>(var, dat)</a>
-<a class="sourceLine" id="cb78-6" title="6">  lvls &lt;-<span class="st"> </span>plotly<span class="op">:::</span><span class="kw">getLevels</span>(var)</a>
-<a class="sourceLine" id="cb78-7" title="7">  dats &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">seq_along</span>(lvls), <span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb78-8" title="8">    <span class="kw">cbind</span>(dat[var <span class="op">%in%</span><span class="st"> </span>lvls[<span class="kw">seq</span>(<span class="dv">1</span>, x)], ], <span class="dt">frame =</span> lvls[[x]])</a>
-<a class="sourceLine" id="cb78-9" title="9">  })</a>
-<a class="sourceLine" id="cb78-10" title="10">  dplyr<span class="op">::</span><span class="kw">bind_rows</span>(dats)</a>
-<a class="sourceLine" id="cb78-11" title="11">}</a>
-<a class="sourceLine" id="cb78-12" title="12"></a>
-<a class="sourceLine" id="cb78-13" title="13">d &lt;-<span class="st"> </span>gdps4 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-14" title="14"><span class="st">  </span><span class="kw">accumulate_by</span>(<span class="op">~</span>year)</a>
-<a class="sourceLine" id="cb78-15" title="15"></a>
-<a class="sourceLine" id="cb78-16" title="16">p &lt;-<span class="st"> </span>d <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-17" title="17"><span class="st">  </span><span class="kw">plot_ly</span>(</a>
-<a class="sourceLine" id="cb78-18" title="18">    <span class="dt">x =</span> <span class="op">~</span>year, </a>
-<a class="sourceLine" id="cb78-19" title="19">    <span class="dt">y =</span> <span class="op">~</span>gdp,</a>
-<a class="sourceLine" id="cb78-20" title="20">    <span class="dt">split =</span> <span class="op">~</span>country,</a>
-<a class="sourceLine" id="cb78-21" title="21">    <span class="dt">frame =</span> <span class="op">~</span>frame, </a>
-<a class="sourceLine" id="cb78-22" title="22">    <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>,</a>
-<a class="sourceLine" id="cb78-23" title="23">    <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>, </a>
-<a class="sourceLine" id="cb78-24" title="24">    <span class="dt">line =</span> <span class="kw">list</span>(<span class="dt">simplyfy =</span> F)</a>
-<a class="sourceLine" id="cb78-25" title="25">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb78-26" title="26"><span class="st">  </span><span class="kw">layout</span>(</a>
-<a class="sourceLine" id="cb78-27" title="27">    <span class="dt">xaxis =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb78-28" title="28">      <span class="dt">title =</span> <span class="st">&quot;Year&quot;</span>,</a>
-<a class="sourceLine" id="cb78-29" title="29">      <span class="dt">zeroline =</span> F</a>
-<a class="sourceLine" id="cb78-30" title="30">    ),</a>
-<a class="sourceLine" id="cb78-31" title="31">    <span class="dt">yaxis =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb78-32" title="32">      <span class="dt">title =</span> <span class="st">&quot;GDP&quot;</span>,</a>
-<a class="sourceLine" id="cb78-33" title="33">      <span class="dt">zeroline =</span> F</a>
-<a class="sourceLine" id="cb78-34" title="34">    )</a>
-<a class="sourceLine" id="cb78-35" title="35">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb78-36" title="36"><span class="st">  </span><span class="kw">animation_opts</span>(</a>
-<a class="sourceLine" id="cb78-37" title="37">    <span class="dt">frame =</span> <span class="dv">100</span>, </a>
-<a class="sourceLine" id="cb78-38" title="38">    <span class="dt">transition =</span> <span class="dv">0</span>, </a>
-<a class="sourceLine" id="cb78-39" title="39">    <span class="dt">redraw =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb78-40" title="40">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-41" title="41"><span class="st">  </span><span class="kw">animation_slider</span>(</a>
-<a class="sourceLine" id="cb78-42" title="42">    <span class="dt">hide =</span> T</a>
-<a class="sourceLine" id="cb78-43" title="43">    ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-44" title="44"><span class="st">  </span><span class="kw">animation_button</span>(</a>
-<a class="sourceLine" id="cb78-45" title="45">    <span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">xanchor =</span> <span class="st">&quot;right&quot;</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yanchor =</span> <span class="st">&quot;bottom&quot;</span></a>
-<a class="sourceLine" id="cb78-46" title="46">  )</a>
-<a class="sourceLine" id="cb78-47" title="47"></a>
-<a class="sourceLine" id="cb78-48" title="48"><span class="co"># Create a shareable link to your chart</span></a>
-<a class="sourceLine" id="cb78-49" title="49"><span class="co"># Set up API credentials: https://plot.ly/r/getting-started</span></a>
-<a class="sourceLine" id="cb78-50" title="50">chart_link =<span class="st"> </span><span class="kw">api_create</span>(p, <span class="dt">filename=</span><span class="st">&quot;finalproject_2&quot;</span>)</a></code></pre></div>
-<pre><code>## Found a grid already named: &#39;finalproject_2 Grid&#39;. Since fileopt=&#39;overwrite&#39;, I&#39;ll try to update it</code></pre>
-<pre><code>## Found a plot already named: &#39;finalproject_2&#39;. Since fileopt=&#39;overwrite&#39;, I&#39;ll try to update it</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">chart_link</a></code></pre></div>
-<iframe src="https://plot.ly/~mdlngeorges/5.embed" width="800" height="600" id="igraph" scrolling="no" seamless="seamless" frameBorder="0">
-</iframe>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 
 </div>
             </section>
