@@ -1,5 +1,9 @@
 # Missing values
 
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
+```
+
 ```{r}
 #libraries
 library(tidyr)
@@ -11,7 +15,7 @@ library(extracat)
 
 Examine Missing Values for Colonial Data set (created in data cleaning)
 ```{r}
-colonialdata <- read.csv("Data/colonialdata.csv")
+colonialdata <- read.csv("Data/clean/colonialdata.csv")
 
 missvalues <-colonialdata %>%rownames_to_column("id") %>%gather(key, value, -id) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
 
@@ -26,7 +30,7 @@ The gini coefficient and human development index adjusted for inequality (IHDI) 
 
 Examine Missing values for England gdp
 ```{r}
-England <- read.csv("Data/EnglandGDPpc.csv")
+England <- read.csv("Data/clean/EnglandGDPpc.csv")
 
 missvalues <-England %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
 
@@ -41,7 +45,7 @@ Note: I think we can just take this out
 Examine Missing Values for Maddison GDP
 
 ```{r fig.height = 20}
-MadGDP <- read.csv("Data/MaddisonGDP.csv")
+MadGDP <- read.csv("Data/clean/MaddisonGDP.csv")
 
 missvalues <- MadGDP %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
 missvalues1800 <- filter(MadGDP, year > 1800) %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
@@ -58,7 +62,7 @@ ggsave("MadGDPmissing.png", n, width=20, height=20)
 Examine Missing Values for Maddison per capita GDP
 per country that I examine
 ```{r fig.height = 20}
-Mad <- read.csv("Data/Maddison.csv")
+Mad <- read.csv("Data/clean/Maddison.csv")
 #This data was reformatted here simply for the purposes of the missing values analysis
 Madcleanc <- spread(subset(Mad, select = -c(country,pop,i_cig, i_bm, rgdpnapc)), key = countrycode, value = cgdppc)
 #Madcleanr <- spread(subset(Mad, select = -c(country,pop,i_cig, i_bm, cgdppc)), key = countrycode, value = rgdpnapc)
@@ -117,7 +121,7 @@ These are some countries that would likely be more interesting to look at in ter
 
 
 ```{r}
-transformations = read.csv('Data/transformations.csv')
+transformations = read.csv('Data/clean/transformations.csv')
 visna(transformations)
 ```
 
