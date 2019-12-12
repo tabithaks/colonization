@@ -12,10 +12,28 @@ head(coldata,1)
 ```
 
 
-## Indicators (GPD, Gini, HDI)
+## Indicators (GDP, Gini, HDI)
+
+We obtained worldwide GDP per capita data in 2017. This dataset can be found [here](https://databank.worldbank.org/home.aspx). 
+
+We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information [here](http://hdr.undp.org/en/data)
+The actual download we used is a little difficult to find so the direct link is [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=2ahUKEwj92b7u7LDmAhWWVs0KHY5-Dy4QFjACegQIBRAC&url=http%3A%2F%2Fhdr.undp.org%2Fsites%2Fdefault%2Ffiles%2F2018_all_indicators.xlsx&usg=AOvVaw1X2alKbj6XdNRcUGJ_DD-E)
+Please note that this is a direct link to the download so only click on it if you would like to download a copy of the data.
+
+We pulled the most recent information we could find for each of these countries in an attempt to think about how colonization may have impacted what is going on in a country today. Of course the time period of colonization was extremely long and complicated, and about 70 years have passed since colonialism ended, so many other factors certainly have an impact. But this was the concept we were hoping to explore.
+
+per capita GDP 2017: Represents gross domestic product per capita in 2017.
+Gini Coefficient: Measurement of inequality, the higher the value, the more unequal the society. These measurements were taken between 2010-2017. There was only one measurement per country, but which year that measurement came from was unclear. We felt that given the span of colonialism, this was acceptable as a method to evaluate a country's current status.
+
+HDI: Stands for human development index. A higher value represents a higher quality of life. Details regarding how this index is calculated and what it measures can be found [here](http://hdr.undp.org/en/content/human-development-index-hdi)
 
 ### Angus Maddison
 
+The dataset can be found [here](https://www.rug.nl/ggdc/historicaldevelopment/maddison/)
+
+This dataset consists of countries and their estimated per capita GDP's overtime. This work is a continuation of that done by Angus Maddison. They provide two types of per capita GDP, one consistent with growthrates and another that ensured the comparative value of goods in a single year was consistent. We chose to make comparisons using measurement since it seemed more appropriate since we were interested in comparing per capita GDP, rather than growth rate. This decision was made based on the documentation provided on the website.
+
+We used this data to see if we could look at the economic impact of colonialism overtime and see any patterns. The difficulty of course, was the limitations of what data was available, its accuracy. Ideally we would have liked to look at the GDP for a few countries from prior to colonization, during colonization and after. The difficulty of that is the prior to colonization part, and some of the years during colonization -- for the vast majority of countries information during this period is unavailable. This makes sense as the world looked very different now, and modern countries frequently didn't exist. However, we did our best to use what we had to explore how the economic situation changed overtime.
 
 ## 
 
