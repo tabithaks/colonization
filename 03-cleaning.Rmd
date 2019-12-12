@@ -44,7 +44,7 @@ coldata_clean$ColRulerName[coldata_clean$ColRuler == -9] <- "Not Colonized"
 coldata_clean$ColRulerCode[coldata_clean$ColRuler == -9] <- "N/C"
 
 #Clean up countries without given codes
-coldata_clean <- coldata_clean[-c(8,9,11,12,13,14,15,16,17,18,20,27,28,30,31,32,89,91,132,173),]
+coldata_clean <- coldata_clean[-c(8,9,11,12,13,14,15,16,17,18,20,27,28,30,31,32,43,89,91,132,173),]
 
 #Add in Kosovo's code manually since package didn't recognize it
 coldata_clean[coldata_clean$Name == "Kosovo", "Code"] = "RKS"
@@ -131,6 +131,10 @@ England <- merge( filter(Mad, countrycode == "GBR")[,c("year", "cgdppc", "rgdpna
 England <- mutate(England, cgdp = ifelse(is.na(cgdppc), cgdppc_England, cgdppc ))
 England <- mutate(England, rgdp = ifelse(is.na(rgdpnapc), rgdpnapc_England, rgdpnapc ))
 write.csv(England, file = "Data/EnglandGDPpc.csv", row.names=FALSE)
+
+#Connect Maddison and Colonial history datasets
+ColMad <- merge(colonialdata, Mad, by.x = "Code", by.y = "countrycode")
+write.csv(ColMad, file = "Data/ColMad.csv", row.names = FALSE)
 ```
 
 The original Maddison dataset is the latest version from his original website, which included raw GDP rather than only per capita, it also went back a bit further. The other Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are more recent/probably account for more of the historical aspects. The links to the sources provide detailed documentation/explanation of the changes and significance.
