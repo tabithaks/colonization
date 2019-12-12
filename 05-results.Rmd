@@ -44,7 +44,7 @@ colgdpNT <- filter(colonialdata, ColRuler == 210)[c("Name")]
 print("Countries Colonized by the Netherlands")
 print(colgdpNT)
 ```
-This graph shows that the average 2017 per capita gdp of countries that were never colonized is far greater than the average per capita GDP of countries that were colonized. The only group that comes close is the countries colonized by the Netherlands. The reason for this is likely that the Netherlands' colonies include Belgium and Luxembourg, both of which have quite high per capita gdp's currently. It's likely that in order to understand this we would have to delve into the history of Netherlands, Belgium and Lexumbourg, when they were colonized, what that colonial relationship looked like and when they became independent. Interestingly enough when we look at the lower end of the graph, Belgium's colonies (it was both colonized and a colonial power) have the lowest current GDP's. It's interesting to note that the Belgium had a reputation for being a particularly cruel colonial power.
+This graph shows that the average 2017 per capita gdp of countries that were never colonized is far greater than the average per capita GDP of countries that were colonized. The only group that comes close is the countries colonized by the Netherlands. The reason for this is likely that the Netherlands' colonies include Belgium and Luxembourg, both of which have quite high per capita gdp's currently. It's likely that in order to understand this we would have to delve into the history of Netherlands, Belgium and Lexumbourg, when they were colonized, what that colonial relationship looked like and when they became independent. Interestingly enough when we look at the lower end of the graph, Belgium's colonies (it was both colonized and a colonial power) have the lowest current GDP's. It's interesting to note that the Belgium has a reputation for being a particularly cruel colonial power.
 
 ```{r}
 ginirule <- colonialdata %>% group_by(ColRulerName) %>% summarize(mean_gini = mean(Gini, na.rm = TRUE))
@@ -85,7 +85,7 @@ It's clear that England's GDP increased drastically following the 1800s, but the
 ```{r}
 ggplot(filter(England, year >= 1900 & year <= 1950), aes(x = year, y = cgdp)) + geom_point() + labs(title = "England/UK's GDP over time")
 ```
-Unsurprisingly, it seems that large historical trends come out clearly in this data. There is a drop in GDP following World war I, the 30s -- corresponding to the great depression, and post World War II. Of course it's at this point that England lost all it's colonies. It is however, worth noting that England's ability to benefit from their colonies was likely decreasing for a longtime prior to this.
+Unsurprisingly, it seems that large historical trends come out clearly in this data. There is a drop in GDP following World War I, the 30s -- corresponding to the great depression, and post World War II. Of course it's at this point that England lost all it's colonies. It is however, worth noting that England's ability to benefit from their colonies was likely decreasing for a longtime prior to this.
 
 Let's see if we can uncover anything about England's GDP versus those of its colonies. Since the UK colonized so many countries we selected a few to look at based on which countries we had more data for.
 
@@ -98,7 +98,6 @@ Even restricted to a narrower timeframe, there are too many countries to really 
 ```{r}
 ggplot() + geom_line(data = filter(England, year >= 1800 & year <= 1950), aes(x = year, y = cgdp), color = "red") + geom_line(data = filter(ColMad, (ColRulerName == "United Kingdom" & (GDPpc17 >= 30000) & year >= 1800 & year <= 1950)), aes(x = year, y = cgdppc, col = country))
 ```
-
 
 ## GDP by years colonized
 ```{r}
@@ -159,6 +158,3 @@ ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) +
 
 Other than the obvious correlations between the different type of violences and their composite counterpart V Total, and the strong correlation between the Total Violence level and the Political Transformation Level (which comes as no surpris when examining that the highest PT values have encoded the most violent situations.)
 There is a strong negative correlation between PT3 : 'Instrumentalization of ethnolinguistic/religious cleavages' and ET7 / ST1 : 'Mining during colonial period' and 'Foreign presence during colonial period'. While we did not grasp an obvious link with the former, it is interesting that a heightened control of a Country's internal struggles could be an efficient division/control strategy for Colonizing Countries with lower colonial presence.
-
-
-
