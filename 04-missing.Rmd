@@ -117,8 +117,7 @@ In the graph that provides a closer look at country's per capita GDP's after 180
 -Australia
 -Argentina
 
-These are some countries that would likely be more interesting to look at in terms of gdp overtime, simply because the data is more available. In terms of countries that have been colonized, looking at the trends in Latin America may be particularly interesting.
-
+These are some countries that would likely be more interesting to look at in terms of gdp overtime, simply because the data is more available.
 
 ```{r}
 transformations = read.csv('Data/clean/transformations.csv')
