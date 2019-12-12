@@ -20,10 +20,10 @@ library(extracat)
 
 ## Load the data
 ```{r warning=FALSE}
-coldata <- read.csv("Data/coldata110.csv")
-gdpdata <- read.csv("Data/UNGDP.csv")
-stateabs <- read.csv("Data/states2016.csv")
-indicators <- read_excel("Data/2018_all_indicators.xlsx",sheet = 1)
+coldata <- read.csv("Data/raw/coldata110.csv")
+gdpdata <- read.csv("Data/raw/UNGDP.csv")
+stateabs <- read.csv("Data/raw/states2016.csv")
+indicators <- read_excel("Data/raw/2018_all_indicators.xlsx",sheet = 1)
 ```
 
 ## Cleaning Colonization Data and adding GDP/HDI/Gini indicators
@@ -102,7 +102,7 @@ colonialdata <- merge(colonialdata, gini, by.x = "Code", by.y = "iso3", all.x = 
 cols <- c("State","Name", "Code", "ColRulerName", "GDPpc17", "HDI17", "IHDI17", "Gini")
 colonialdata <- colonialdata[,c(cols, setdiff(names(colonialdata), cols))]
 
-write.csv(colonialdata, file = "Data/colonialdata.csv", row.names=FALSE)
+write.csv(colonialdata, file = "Data/clean/colonialdata.csv", row.names=FALSE)
 ```
 
 ## Country-specific cleaning
@@ -120,26 +120,26 @@ Yemen had three variants, two of which were colonized by the UK, and the other w
 ```{r warning=FALSE}
 #Source: https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018
 #Get revised Maddison data
-Mad <- read_excel("Data/mpd2018.xlsx",sheet = 2)
-write.csv(Mad, file = "Data/Maddison.csv", row.names=FALSE)
+Mad <- read_excel("Data/raw/mpd2018.xlsx",sheet = 2)
+write.csv(Mad, file = "Data/clean/Maddison.csv", row.names=FALSE)
 
 #Source: http://www.ggdc.net/maddison/oriindex.htm
 #Get and clean up Maddison's original data on GDP
-MadO <- read_excel("Data/mpdorig.xls", sheet = 3, skip = 2)
+MadO <- read_excel("Data/raw/mpdorig.xls", sheet = 3, skip = 2)
 names(MadO)[1] <- "year"
 MadO <- MadO[rowSums(is.na(MadO)) != ncol(MadO), ]
-write.csv(MadO, file = "Data/MaddisonGDP.csv", row.names=FALSE)
+write.csv(MadO, file = "Data/clean/MaddisonGDP.csv", row.names=FALSE)
 
 #Get and clean Maddison data for England (We merged data from England and the UK since information was available for England for a longer period)
 MadEng <- read_excel("Data/mpd2018.xlsx", skip = 1, sheet = 8)
 England <- merge( filter(Mad, countrycode == "GBR")[,c("year", "cgdppc", "rgdpnapc")], MadEng[,c("year", "cgdppc_England", "rgdpnapc_England")], by.x = "year", by.y = "year", all = TRUE)
 England <- mutate(England, cgdp = ifelse(is.na(cgdppc), cgdppc_England, cgdppc ))
 England <- mutate(England, rgdp = ifelse(is.na(rgdpnapc), rgdpnapc_England, rgdpnapc ))
-write.csv(England, file = "Data/EnglandGDPpc.csv", row.names=FALSE)
+write.csv(England, file = "Data/clean/EnglandGDPpc.csv", row.names=FALSE)
 
 #Connect Maddison and Colonial history datasets
 ColMad <- merge(colonialdata, Mad, by.x = "Code", by.y = "countrycode")
-write.csv(ColMad, file = "Data/ColMad.csv", row.names = FALSE)
+write.csv(ColMad, file = "Data/clean/ColMad.csv", row.names = FALSE)
 ```
 
 The original Maddison dataset is the latest version from his original website, which included raw GDP rather than only per capita, it also went back a bit further. The other Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are more recent/probably account for more of the historical aspects. The links to the sources provide detailed documentation/explanation of the changes and significance.
@@ -152,7 +152,7 @@ For the England data, information on the UK began around 1700, but there was dat
 The main concern here was to remain consistent in country notations. We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the columns for ease of use, as they were named after over 35-character-long strings that described the indicators and its range in great detail. The encoding can be found on our github and is specified in each relevant. One can remember that PT1/ET1/ST1 stand for Political/Economic/Social Transformation Indicator 1, and V stand for observed violence.
 
 ```{r}
-transfo_raw <- read.csv("Data/Colonial_transformation_data.csv")
+transfo_raw <- read.csv("Data/raw/Colonial_transformation_data.csv")
 
 transformations <- transfo_raw
 
@@ -190,7 +190,7 @@ transformations$Code <- as.character(transformations$Code)
 
 
 ```{r}
-write.csv(transformations, file = "Data/transformations.csv", row.names=FALSE)
+write.csv(transformations, file = "Data/clean/transformations.csv", row.names=FALSE)
 ```
 
 The cleaning has been done to facilitate comparison of the factors in both datasets for the same country; however we deemed that merging the two datasets would not be very practical for our use cases. Furthermore, the transformations dataset only concerns itself with colonized countries. Merging would therefore artificially induce a great number of NAs because of the presence of non-colonized countries in the colonisation dataset, which would cloud the missing data analysis that follow. So, we chose to keep them separate.
