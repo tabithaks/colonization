@@ -1,5 +1,10 @@
 # Data transformation
 
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, eval=FALSE)
+```
+
+
 ```{r warning=FALSE, echo=FALSE}
 library(ggplot2)
 library(dplyr)

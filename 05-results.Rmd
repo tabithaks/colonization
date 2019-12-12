@@ -1,5 +1,9 @@
 # Results
 
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
+```
+
 ```{r echo=FALSE}
 library(tidyr)
 library(tidyverse)
