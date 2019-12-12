@@ -1,1 +1,78 @@
 # Results
+
+```{r echo=FALSE}
+library(tidyr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(GGally)
+library(parcoords)
+library(reshape2)
+library(RColorBrewer)
+```
+
+
+
+
+## Analysis of GDP
+
+
+
+
+
+## Indicators of Colonization
+
+The multiple indicators 
+Plotting a parcoords of all 20-something variable definitely fails into overplotting, so we displayed the 'summary indicators', Political/Economical/Social Transformation level, which have the benefit of 1) containing the general patterns of other variables 2) being already linearly scaled to 0-100 values. We plotted them against the gdp, as an (imperfect) metric of current performance of the country.
+
+```{r}
+setsmerged <- merge(transformations, colonialdata, by.x = "Code", by.y = "Code", all.x = TRUE)
+across <- na.omit(setsmerged[c('Country','PT.Level', 'ET.Level', 'ST.Level', 'CT.Level','GDPpc17')])
+
+parcoords(data = across,
+          rownames = F , 
+          brushMode = "1D-axes", 
+          reorderable = T, 
+          queue = T)
+```
+
+Overwhelmingly so, most countries are concentrated in the lower range of the GDPs. The three top-most (Japan, United Emirates, Qatar) countries in terms of GDPs also report lower-than average and median scores on colonization indicators. It is however good to have a critical viewpoint on this, as the three outliers have very specific colonial history that do not fall into the classic european domination framework as others.
+
+```{r}
+across <- na.omit(setsmerged[c('Country','Colonizer','PT.Level', 'ET.Level', 'ST.Level', 'CT.Level','GDPpc17')]) 
+across_smry <- across %>% group_by(Colonizer) %>% summarise_at(vars(`PT.Level`:GDPpc17), mean, na.rm = TRUE)
+across_smry <- across_smry[-c(12),] #Removing non colonized countries
+
+ggparcoord(across_smry,columns=2:5, groupColumn=1, scale="globalminmax")
+```
+
+This plot allows us to view the plight of countries by their relative colonizers, and identify the "worst offenders". Netherlands and Portugal come in scoring higher overall than the UK and France, which came as a surprise to us, as we had those first in mind as countries with heavy colonial history. That can be justified by actually noticing that the UK and France both had a much wider colonial empire (see next graphs). As often in statistics, the greater range of countries tends to shrink the mean towards the middle, and as a boxplot shows us the range of the Colonial Transformation (overall summary indicator) is greater for France and the UK.
+
+```{r warnings=FALSE}
+ggplot(across, aes(x = Colonizer)) + geom_histogram(stat="count")
+```
+
+```{r}
+across <- across[across$Colonizer != 'x',]
+ggplot(across, aes(x = "", y = CT.Level)) + geom_boxplot() + coord_flip() + facet_grid(Colonizer~.)
+```
+
+
+
+### Correlations of variables (covariance matrixes)
+
+```{r}
+num_data <- na.omit(transformations[7:26])
+cormat <- round(cor(num_data),2)
+melted_cormat <- melt(cormat)
+
+ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile() + scale_fill_distiller(type = "div", palette = 5, direction = 1,
+  aesthetics = "fill")
+```
+
+Other than the obvious correlations between the different type of violences and their composite counterpart V Total, and the strong correlation between the Total Violence level and the Political Transformation Level (which comes as no surpris when examining that the highest PT values have encoded the most violent situations.)
+There is a strong negative correlation between PT3 : 'Instrumentalization of ethnolinguistic/religious cleavages' and ET7 / ST1 : 'Mining during colonial period' and 'Foreign presence during colonial period'. While we did not grasp an obvious link with the former, it is interesting that a heightened control of a Country's internal struggles could be an efficient division/control strategy for Colonizing Countries with lower colonial presence.
+
+
+
