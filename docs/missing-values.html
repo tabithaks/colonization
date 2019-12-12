@@ -121,12 +121,12 @@
 <div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
 <p>Examine Missing Values for Colonial Data set (created in data cleaning)
-<img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 From this, it seems that most countries have values for most data. There are a few missing values in ColRulerCode, this is because some countries were colonized by Austria-Hungary, which does not now exist and therefore has no iso3 code.</p>
 <p>Per capita GDP has a single missing value for Taiwan, I’m not very sure why this is the case, it just wasn’t part of the UN dataset. This might have to do with the China-Taiwan conflict.</p>
 <p>The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised me, I expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because I felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, I was surprised that there was so much missing information on the subject</p>
 <p>Examine Missing values for England gdp
-<img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Examining the GDP data available for England we can see that, while there are values at 0, 500, and 1000, a great deal of data in that time period doesn’t appear. This information is not colored yellow for missing simply because those years are not even listed in the dataset. Because the rgdp and cgdp columns combine information on England and the UK they have the most filled values, including every year from about 1200 onwards. We use this data to examine the per capita gdp of England overtime</p>
 <p>Examine Missing Values for Maddison per capita GDP
 per country that I examine</p>
@@ -168,7 +168,7 @@ per country that I examine</p>
 -Australia
 -Argentina</p>
 <p>These are some countries that would likely be more interesting to look at in terms of gdp overtime, simply because the data is more available.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Upon inspection, the countries which are missing Data fall into the following patterns:
 - Countries that are missing only one value: Egypt, Jordania, Lesotho. Said values are absent from the original csv presented on the University of Zurich website.
 - Mongolia, who is missing Colonization beginning and end dates, and has all “present” values set to 0. Similarly:
