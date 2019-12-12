@@ -20,11 +20,11 @@ library(RColorBrewer)
 ###Get data
 
 ```{r}
-colonialdata <- read.csv("Data/colonialdata.csv")
-Mad <- read.csv("Data/Maddison.csv")
-ColMad <- read.csv("Data/ColMad.csv")
-England <- read.csv("Data/EnglandGDPpc.csv")
-Transformations <- read.csv("Data/transformations.csv")
+colonialdata <- read.csv("Data/clean/colonialdata.csv")
+Mad <- read.csv("Data/clean/Maddison.csv")
+ColMad <- read.csv("Data/clean/ColMad.csv")
+England <- read.csv("Data/clean/EnglandGDPpc.csv")
+Transformations <- read.csv("Data/clean/transformations.csv")
 ColTrans <- merge(Transformations, colonialdata, by.x = "Code", by.y = "Code", all.x = TRUE)
 ```
 
