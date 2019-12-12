@@ -87,17 +87,24 @@ ggplot(filter(England, year >= 1900 & year <= 1950), aes(x = year, y = cgdp)) + 
 ```
 Unsurprisingly, it seems that large historical trends come out clearly in this data. There is a drop in GDP following World War I, the 30s -- corresponding to the great depression, and post World War II. Of course it's at this point that England lost all it's colonies. It is however, worth noting that England's ability to benefit from their colonies was likely decreasing for a longtime prior to this.
 
-Let's see if we can uncover anything about England's GDP versus those of its colonies. Since the UK colonized so many countries we selected a few to look at based on which countries we had more data for.
+Let's see if we can uncover anything about England's GDP versus those of its colonies.
 
 ```{r}
-ggplot() + geom_line(data = filter(England, year >= 1800), aes(x = year, y = log(cgdp)), color = "red") + geom_line(data = filter(ColMad, ColRulerName == "United Kingdom" & year >= 1800), aes(x = year, y = log(cgdppc), col = country))
+England <- mutate(England, country = "England/UK")
+ggplot() + geom_line(data = filter(England, year >= 1800), aes(x = year, y = log(cgdp), col = factor(country))) + geom_line(data = filter(ColMad, ColRulerName == "United Kingdom" & year >= 1800), aes(x = year, y = log(cgdppc), col = country))
 
 ```
-Even restricted to a narrower timeframe, there are too many countries to really interpret this graph. So we'll pull a few countries out based on their current GDP's
+Even restricted to a narrower timeframe, there are too many countries to really interpret this graph. In fact, we can see that much information because at 1950, exactly after the end of colonialism. This makes comparing how a country fared before and after colonialism very difficult. So we'll pull a few countries out based on what we have data for (these were determined from the missing values analysis).
 
 ```{r}
-ggplot() + geom_line(data = filter(England, year >= 1800 & year <= 1950), aes(x = year, y = cgdp), color = "red") + geom_line(data = filter(ColMad, (ColRulerName == "United Kingdom" & (GDPpc17 >= 30000) & year >= 1800 & year <= 1950)), aes(x = year, y = cgdppc, col = country))
+
+ggplot() + geom_line(data = filter(England, year >= 1600 & year <= 1950), aes(x = year, y = cgdp, col = factor(country))) + geom_line(data = filter(ColMad, ((country == "South Africa" | country == "Sri Lanka" | country == "United States") & year >= 1600 & year <= 1950)), aes(x = year, y = cgdppc, col = country)) + theme(legend.title = element_blank()) + scale_fill_discrete(name = "color", labels = c("England/UK", "South Africa", "Sri Lanka", "United States"))
+#ggplot() + geom_line(data = filter(ColMad, ((country == "South Africa" | country == "Sri Lanka" | country == "United States") & year >= 1600 & year <= 1950)), aes(x = year, y = cgdppc, col = country)) + stat_function(data = filter(England, year >= 1600 & year <= 1950), fun = cos, aes(color = "cos"))
+
 ```
+Again the limitation of the data becomes apparent, although Sri Lanka had data extending farther back than many countries it still is fairly limited, understanding the impacts of colonialism overtime from data is clearly a problematic endeavour due to the lack of data available. And making any kind of statement as to trends is impossible since we have strong selection bias regarding what we looked at more closely -- what data was available, which does not give us an accurate picture of the situation as a whole.
+
+However, interesting observation is that the GDP of South Africa is greater than that of the UK until about 1800, which is around when South Africa became a colony of the UK. Prior to that South Africa was actually a colony of the Netherlands. Making any kind of statement based on this is clearly difficult, the UK's GDP may have been increasing because of the colonization of other countries and the industrial revolution is likely a factor as well. And the reason that the UK was able to take control of South Africa from the Netherlands is another question. However the fact that we can see the GDP of South Africa decreasing at this time indicates it may be interest to compare the UK's colonial policies regarding South Africa differed from those of the Netherlands. Or if perhaps it had anything to do with the demand of the kinds of goods/agriculture/etc South Africa supplied changing. Essentially this suggests an area of potential further historical analysis.
 
 ## GDP by years colonized
 ```{r}
