@@ -6,9 +6,12 @@ Data can be found [here](https://www.paulhensel.org/icowcol.html)
 
 The Colonial History Data Set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended.
 
+**Variables of the Colonial History Data Set**
+
 ```{r echo=FALSE}
-coldata <- read.csv("Data/coldata110.csv")
-head(coldata)
+coldata <- read.csv("Data/raw/coldata110.csv")
+
+colnames(coldata)
 ```
 
 
@@ -41,8 +44,9 @@ Data can be found [here](https://www.researchgate.net/publication/314156755_Meas
 
 This Dataset is a product of the Research from Ziltener, Patrick & Künzler, Daniel & Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683. It encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, "Colonial Rule" has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files.
 
-
+**Variables of the Colonial Transformations Data Set**
 ```{r echo=FALSE}
-transfo_raw <- read.csv("Data/Colonial_transformation_data.csv")
-head(transfo_raw)
+transfo_raw <- read.csv("Data/raw/Colonial_transformation_data.csv")
+
+colnames(transfo_raw)
 ```
