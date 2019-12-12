@@ -175,6 +175,7 @@ for (r in 1:nrow(transformations)) {
 
 transformations[84,1] <- 'COD'
 transformations$CountryISO <- NULL
+transformations$Code <- as.character(transformations$Code)
 
 ```
 
