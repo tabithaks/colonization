@@ -1,6 +1,6 @@
 # Missing values
 
-```{r}
+```{r eval=FALSE}
 #libraries
 library(tidyr)
 library(tidyverse)
@@ -30,33 +30,15 @@ England <- read.csv("Data/clean/EnglandGDPpc.csv")
 
 missvalues <-England %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
 
-ggplot(missvalues, aes(x = key, y=year, fill = missing)) +geom_tile(color ="white") +ggtitle("Missing Values in England GDP per capita data") +scale_fill_viridis_d() + theme_bw() + coord_flip() + labs(x = "Years") + theme(axis.text.x = element_text(angle = 90))
+ggplot(missvalues, aes(x = key, y=year, fill = missing)) +geom_tile(color ="white") + ggtitle("Missing Values in England GDP per capita data") +scale_fill_viridis_d() + theme_bw() + coord_flip() + labs(x = "Years") + theme(axis.text.x = element_text(angle = 90))
 ```
 
 Examining the GDP data available for England we can see that, while there are values at 0, 500, and 1000, a great deal of data in that time period doesn't appear. This information is not colored yellow for missing simply because those years are not even listed in the dataset. Because the rgdp and cgdp columns combine information on England and the UK they have the most filled values, including every year from about 1200 onwards. We use this data to examine the per capita gdp of England overtime
 
 
-Note: I think we can just take this out
-
-Examine Missing Values for Maddison GDP
-
-```{r fig.height = 20}
-MadGDP <- read.csv("Data/clean/MaddisonGDP.csv")
-
-missvalues <- MadGDP %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
-missvalues1800 <- filter(MadGDP, year > 1800) %>%gather(key, value, -year) %>%mutate(missing =ifelse(is.na(value), "yes", "no"))
-
-m <- ggplot(missvalues1800, aes(x = key, y =year, fill = missing)) +geom_tile(color ="white") +ggtitle("Missing Values in Maddison GDP After 1800") +scale_fill_viridis_d() + theme_bw() + coord_flip() + labs(x = "Countries", y = "Years") + theme(axis.text.x = element_text(angle = 90)) + theme_minimal(base_size=12)
-
-n <-  ggplot(missvalues, aes(x = key, y =year, fill = missing)) +geom_tile(color ="white") +ggtitle("Missing Values in Maddison GDP") +scale_fill_viridis_d() + theme_bw() + coord_flip() + labs(x = "Countries", y = "Years") + theme(axis.text.x = element_text(angle = 90)) + theme_minimal(base_size=12)
-
-ggsave("MadGDPmissing1800.png", m, width=20, height=20)
-ggsave("MadGDPmissing.png", n, width=20, height=20)
-```
-
-
 Examine Missing Values for Maddison per capita GDP
 per country that I examine
+
 ```{r fig.height = 20}
 Mad <- read.csv("Data/clean/Maddison.csv")
 #This data was reformatted here simply for the purposes of the missing values analysis
@@ -76,14 +58,19 @@ mc1800 <- ggplot(missvaluesc1800, aes(x = key, y =year, fill = missing)) +geom_t
 
 #mr1800 <-  ggplot(missvaluesr1800, aes(x = key, y =year, fill = missing)) +geom_tile(color ="white") +ggtitle("Missing Values in Maddison RGDPpc") +scale_fill_viridis_d() + theme_bw() + coord_flip() + labs(x = "Countries", y = "Years") + theme(axis.text.x = element_text(angle = 90)) + theme_minimal(base_size=12)
 
-ggsave("MadPmissingGDPC.png", mc, width=20, height=20)
-#ggsave("MadGDPmissingGDPR.png", mr, width=20, height=20)
-ggsave("MadPmissingGDPC1800.png", mc1800, width=20, height=20)
+ggsave("img/MadPmissingGDPC.png", mc, width=20, height=20)
+#ggsave("img/MadGDPmissingGDPR.png", mr, width=20, height=20)
+ggsave("img/MadPmissingGDPC1800.png", mc1800, width=20, height=20)
 #ggsave("MadPmissingGDPR1800.png", mr1800, width=20, height=20)
 ```
-Looking at this data it's clear that there is very little data available prior to 1800, It only exists for select years ex(500,1000,1500). As in the previous chart we can see that as those years are empty space.
 
-## INSERT FILE HERE ONCE GITHUB UPLOADED
+![Missing Values in Maddison CGDPpc](img/MadPmissingGDPC.png)
+
+![Missing Values in Maddison CGDPpc after 1800](img/MadPmissingGDPC1800.png)
+
+(The files have been saved for convenience of viewing and are under the github img/ folder.)
+
+Looking at this data it's clear that there is very little data available prior to 1800, It only exists for select years ex(500,1000,1500). As in the previous chart we can see that as those years are empty space.
 
 In the graph that provides a closer look at country's per capita GDP's after 1800s. Countries with more data available than others include:
 -South Africa
