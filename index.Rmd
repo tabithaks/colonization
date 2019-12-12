@@ -7,3 +7,13 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+The broad topic of this project is “Colonization”. Having stated that, we recognize early on that the scope implied by this alone is too broad and requiring far more Historical work than Data Visualization. More accurately, we could say that we worked on a subset of numerical data and indicators on Colonized countries. 
+
+During our research for interesting datasets, we stumbled on Professor Paul Hansel’s Colonial History Data Set (within the Issues Correlates of War Project), which we found to be a deeply interesting topic. We supplemented it with datasets that are detailed further in the project.
+
+Main questions we were set on exploring included:
+- How can we correlate a colonized country with its current economic health/other factors?
+- Which parameters are at stake?
+- What trends can be attributed to colonizer countries?
+
+Perhaps as a correlate of that interestingness, it also proved to be very challenging, and even as we deliver this project it is certain that there is still much more to derive in meaning from this data. This is where we are most aware of the shortcomings Data Scientist face because of not enough domain knowledge. Still, while not being in any way History experts nor claiming to be, we appreciated working on such an interesting topic, and feel it is an interesting forray into using numerical tools for Humanities project.
