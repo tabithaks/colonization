@@ -1,9 +1,5 @@
 # Missing values
 
-```{r setup}
-knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
-```
-
 ```{r}
 #libraries
 library(tidyr)
