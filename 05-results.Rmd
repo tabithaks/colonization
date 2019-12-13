@@ -66,7 +66,6 @@ It's interesting to note that when comparing other average Gini coefficient and 
 colAh <- filter(colonialdata, ColRulerName == "Austria-Hungary")
 print("Countries Colonized by Austria Hungary")
 print(colAh)
-
 colJ <- filter(colonialdata, ColRulerName == "Japan")
 print("Countries Colonized by Japan")
 print(colJ)
@@ -92,7 +91,6 @@ Let's see if we can uncover anything about England's GDP versus those of its col
 ```{r}
 England <- mutate(England, country = "England/UK")
 ggplot() + geom_line(data = filter(England, year >= 1800), aes(x = year, y = log(cgdp), col = factor(country))) + geom_line(data = filter(ColMad, ColRulerName == "United Kingdom" & year >= 1800), aes(x = year, y = log(cgdppc), col = country))
-
 ```
 Even restricted to a narrower timeframe, there are too many countries to really interpret this graph. In fact, we can see that much information because at 1950, exactly after the end of colonialism. This makes comparing how a country fared before and after colonialism very difficult. So we'll pull a few countries out based on what we have data for (these were determined from the missing values analysis).
 
