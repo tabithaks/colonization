@@ -2,7 +2,8 @@
 
 ## Colonial History Dataset
 
-Data can be found [here](https://www.paulhensel.org/icowcol.html) 
+**Source :**
+Paul R. Hensel (2018). "ICOW Colonial History Data Set, version 1.1." Available at <http://www.paulhensel.org/icowcol.html>.
 
 The colonial history data set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended. Several colonies were controlled by different colonial powers over the years, in our analysis we focused on the principal colonial ruler, as designated by the dataset, on the assumption that that country would have had the biggest effect on the colony.
 
@@ -15,9 +16,10 @@ colnames(coldata)
 
 ## Current Indicators Data (GDP, Gini, HDI)
 
-We obtained worldwide GDP per capita data in 2017. This dataset can be found [here](https://databank.worldbank.org/home.aspx). 
+Worldwide GDP per capita data in 2017. 
+Source: [databank.worldbank.org](https://databank.worldbank.org/home.aspx). 
 
-We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information [here](http://hdr.undp.org/en/data)
+We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information here at [hdr.undp.org](http://hdr.undp.org/en/data)
 The actual download we used is a little difficult to find so the direct link is [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=2ahUKEwj92b7u7LDmAhWWVs0KHY5-Dy4QFjACegQIBRAC&url=http%3A%2F%2Fhdr.undp.org%2Fsites%2Fdefault%2Ffiles%2F2018_all_indicators.xlsx&usg=AOvVaw1X2alKbj6XdNRcUGJ_DD-E)
 Please note that this is a direct link to the download so only click on it if you would like to download a copy of the data.
 
@@ -38,9 +40,10 @@ We used this data to see if we could look at the economic impact of colonialism 
 
 ## Colonial Transformation Dataset
 
-Data can be found [here](https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia) 
+**Source :**
+[Research from Ziltener, Patrick & Künzler, Daniel & Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683.](https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia) 
 
-This Dataset is a product of the Research from Ziltener, Patrick & Künzler, Daniel & Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683. It encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, "Colonial Rule" has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files under src.
+This Dataset  encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, "Colonial Rule" has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files under src.
 
 **Variables of the Colonial Transformations Data Set**
 ```{r echo=FALSE}

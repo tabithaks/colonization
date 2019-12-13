@@ -99,9 +99,9 @@ visna(transformations)
 ```
 
 Upon inspection, the countries which are missing data fall into the following patterns:
-- Countries that are missing only one value: Egypt, Jordania, Lesotho. Said values are absent from the original csv presented on the University of Zurich website.
-- Mongolia, who is missing Colonization beginning and end dates, and has all "present" values set to 0. Similarly:
-- Singapour, Brunei and Hong Kong, who have no encoded values. All 4 countires, while presented for the database, seemed to have been considered by the researchers as out of the scope of their studies and their scores should not be considered.
+* Countries that are missing only one value: Egypt, Jordania, Lesotho. Said values are absent from the original csv presented on the University of Zurich website.
+* Mongolia, who is missing Colonization beginning and end dates, and has all "present" values set to 0. Similarly:
+* Singapour, Brunei and Hong Kong, who have no encoded values. All 4 countires, while presented for the database, seemed to have been considered by the researchers as out of the scope of their studies and their scores should not be considered.
 
 ```{r echo=FALSE, eval=FALSE}
 for (r in 1:86) {

@@ -141,7 +141,7 @@ The dataset had information on England starting from 1200 while information on t
 
 ## Colonial Transformation Dataset
 
-We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the column names for ease of use. They were originally named with over 35-character-long strings that described the indicators and their ranges in detail. We encoded these names with abbreviations, the meanings of which can be found on our github. In our analysis primarily look at PT1/ET1/ST1 which stand for Political/Economic/Social Transformation Indicator 1, and V stands for observed violence.
+We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the column names for ease of use. They were originally named with over 35-character-long strings that described the indicators and their ranges in detail. We encoded these names with abbreviations, the meanings of which can be found on our github. "PT" indicators are markers of political transformation, "ST" of social transformation, "ET" economic transformation, and "CT" overall colonial transformations. Description of the indicators at large is available on the source website, and a summary of the variable encoding is included on our github in /src.
 
 ```{r, eval=FALSE}
 transfo_raw <- read.csv("Data/raw/Colonial_transformation_data.csv")
