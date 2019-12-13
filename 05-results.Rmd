@@ -153,7 +153,7 @@ ggplot(across, aes(x = "", y = CT.Level)) + geom_boxplot() + coord_flip() + face
 ```
 
 
-### Correlations of variables (covariance matrixes)
+### Correlations of variables (covariance matrix)
 
 ```{r}
 num_data <- na.omit(transformations[7:26])
