@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Data transformation | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 3 Data transformation | YOUR TITLE HERE" />
+  <title>Chapter 3 Data transformation | Visualizing Colonization</title>
+  <meta name="description" content="Chapter 3 Data transformation | Visualizing Colonization" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Data transformation | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 3 Data transformation | Visualizing Colonization" />
   <meta property="og:type" content="book" />
   
   
@@ -16,12 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Data transformation | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 3 Data transformation | Visualizing Colonization" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Tabitha Sugumar &amp; Madeleine Georges" />
 
 
 <meta name="date" content="2019-12-12" />
@@ -50,70 +50,11 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.0/parcoords.js"></script>
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -128,14 +69,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">Colonization</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#colonial-history-dataset"><i class="fa fa-check"></i><b>2.1</b> Colonial History Dataset</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#current-indicators-data-gdp-gini-hdi"><i class="fa fa-check"></i><b>2.2</b> Current Indicators Data (GDP, Gini, HDI)</a></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#angus-maddison-dataset-gdp-over-time"><i class="fa fa-check"></i><b>2.3</b> Angus Maddison Dataset: GDP Over Time</a></li>
+<li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#colonial-transformation-dataset"><i class="fa fa-check"></i><b>2.4</b> Colonial Transformation Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#colonial-history-data-and-adding-gdphdigini-indicators"><i class="fa fa-check"></i><b>3.1</b> Colonial History Data and Adding GDP/HDI/Gini Indicators</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#angus-maddison-dataset"><i class="fa fa-check"></i><b>3.2</b> Angus Maddison Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#colonial-transformation-dataset-1"><i class="fa fa-check"></i><b>3.3</b> Colonial Transformation Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#colonial-history-dataset-1"><i class="fa fa-check"></i><b>4.1</b> Colonial History Dataset</a></li>
+<li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#angus-maddison-dataset-1"><i class="fa fa-check"></i><b>4.2</b> Angus Maddison Dataset</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="missing-values.html"><a href="missing-values.html#maddison-dataset"><i class="fa fa-check"></i><b>4.2.1</b> Maddison Dataset</a></li>
+<li class="chapter" data-level="4.2.2" data-path="missing-values.html"><a href="missing-values.html#england-dataset"><i class="fa fa-check"></i><b>4.2.2</b> England Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="missing-values.html"><a href="missing-values.html#colonial-transformation-dataset-2"><i class="fa fa-check"></i><b>4.3</b> Colonial Transformation Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#average-gdp-per-capita-by-colonizing-country"><i class="fa fa-check"></i><b>5.1</b> Average GDP per capita by Colonizing Country</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#gdp-per-capita-by-years-colonized"><i class="fa fa-check"></i><b>5.2</b> GDP per capita by Years Colonized</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#average-gini-coefficient-and-hdi-by-colonizining-country"><i class="fa fa-check"></i><b>5.3</b> Average Gini Coefficient and HDI by Colonizining Country</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#england-and-its-colonies-gdp-per-capita-over-time"><i class="fa fa-check"></i><b>5.4</b> England and Its Colonies: GDP per capita Over Time</a></li>
+<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#indicators-of-colonization"><i class="fa fa-check"></i><b>5.5</b> Indicators of Colonization</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="results.html"><a href="results.html#variables-across-country-and-colonizers"><i class="fa fa-check"></i><b>5.5.1</b> Variables Across Country and Colonizers</a></li>
+<li class="chapter" data-level="5.5.2" data-path="results.html"><a href="results.html#correlations-of-variables-covariance-matrix"><i class="fa fa-check"></i><b>5.5.2</b> Correlations of variables (covariance matrix)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -149,7 +115,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Visualizing Colonization</a>
           </h1>
         </div>
 
@@ -159,123 +125,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(countrycode)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(foreign)</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(tidyr)</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<p>Load the data</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">coldata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Data/coldata110.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">gdpdata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Data/UNGDP.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3">stateabs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Data/states2016.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb2-4" title="4">indicators &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Data/2018_all_indicators.xlsx&quot;</span>,<span class="dt">sheet =</span> <span class="dv">1</span>)</a></code></pre></div>
-<p>Cleaning Colonization Data and adding GDP/HDI/Gini indicators</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#Clean coldata</span></a>
-<a class="sourceLine" id="cb3-2" title="2">coldata_clean &lt;-<span class="st"> </span>coldata</a>
-<a class="sourceLine" id="cb3-3" title="3">coldata_clean<span class="op">$</span>Code &lt;-<span class="st"> </span><span class="kw">countrycode</span>(coldata<span class="op">$</span>Name,<span class="dt">origin=</span><span class="st">&#39;country.name&#39;</span>,<span class="dt">destination =</span> <span class="st">&#39;iso3c&#39;</span>)</a></code></pre></div>
-<pre><code>## Warning in countrycode(coldata$Name, origin = &quot;country.name&quot;, destination = &quot;iso3c&quot;): Some values were not matched unambiguously: Austria-Hungary, Baden, Bavaria, Czechoslovakia, German Democratic Rep. (East Germany), Hanover, Hesse - Darmstadt (Hesse Grand Ducal), Hesse - Kassel/Cassel (Hesse Electoral), Kosovo, Mecklenburg-Schwerin, Modena, Parma, Republic of Vietnam (South), Saxony, Tuscany, Two Sicilies, Wuerttemburg, Yemen Arab Rep. (Sanaa / North Yemen), Yemen People&#39;s Rep. (Aden / South Yemen), Zanzibar</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">#Add in names (instead of codes of colonizing countries)</span></a>
-<a class="sourceLine" id="cb5-2" title="2">stateabs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Data/states2016.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb5-3" title="3">stateabs &lt;-<span class="st"> </span>stateabs[,<span class="kw">c</span>(<span class="st">&quot;ccode&quot;</span>, <span class="st">&quot;statenme&quot;</span>)] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb5-4" title="4">coldata_clean &lt;-<span class="st"> </span><span class="kw">merge</span>(coldata_clean, stateabs, <span class="dt">by.x =</span> <span class="st">&quot;ColRuler&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;ccode&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-5" title="5">coldata_clean<span class="op">$</span>ColRulerCode &lt;-<span class="st"> </span><span class="kw">countrycode</span>(coldata_clean<span class="op">$</span>statenme, <span class="dt">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="dt">destination =</span> <span class="st">&quot;iso3c&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning in countrycode(coldata_clean$statenme, origin = &quot;country.name&quot;, : Some values were not matched unambiguously: Austria-Hungary</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">#reorder codes</span></a>
-<a class="sourceLine" id="cb7-2" title="2">cols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Code&quot;</span>, <span class="st">&quot;ColRuler&quot;</span>,<span class="st">&quot;ColRulerCode&quot;</span>, <span class="st">&quot;statenme&quot;</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3">coldata_clean &lt;-<span class="st"> </span>coldata_clean[,<span class="kw">c</span>(cols, <span class="kw">setdiff</span>(<span class="kw">names</span>(coldata_clean), cols))]</a>
-<a class="sourceLine" id="cb7-4" title="4"></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">names</span>(coldata_clean)[<span class="dv">6</span>] &lt;-<span class="st"> &quot;ColRulerName&quot;</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="kw">levels</span>(coldata_clean<span class="op">$</span>ColRulerName) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(coldata_clean<span class="op">$</span>ColRulerName), <span class="st">&quot;Not Colonized&quot;</span>)</a>
-<a class="sourceLine" id="cb7-7" title="7">coldata_clean<span class="op">$</span>ColRulerName[coldata_clean<span class="op">$</span>ColRuler <span class="op">==</span><span class="st"> </span><span class="dv">-9</span>] &lt;-<span class="st"> &quot;Not Colonized&quot;</span></a>
-<a class="sourceLine" id="cb7-8" title="8">coldata_clean<span class="op">$</span>ColRulerCode[coldata_clean<span class="op">$</span>ColRuler <span class="op">==</span><span class="st"> </span><span class="dv">-9</span>] &lt;-<span class="st"> &quot;N/C&quot;</span></a>
-<a class="sourceLine" id="cb7-9" title="9"></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="co">#Clean up countries without given codes</span></a>
-<a class="sourceLine" id="cb7-11" title="11">coldata_clean &lt;-<span class="st"> </span>coldata_clean[<span class="op">-</span><span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">27</span>,<span class="dv">28</span>,<span class="dv">30</span>,<span class="dv">31</span>,<span class="dv">32</span>,<span class="dv">89</span>,<span class="dv">91</span>,<span class="dv">132</span>,<span class="dv">173</span>),]</a>
-<a class="sourceLine" id="cb7-12" title="12"></a>
-<a class="sourceLine" id="cb7-13" title="13"><span class="co">#Add in Kosovo&#39;s code manually since package didn&#39;t recognize it</span></a>
-<a class="sourceLine" id="cb7-14" title="14">coldata_clean[coldata_clean<span class="op">$</span>Name <span class="op">==</span><span class="st"> &quot;Kosovo&quot;</span>, <span class="st">&quot;Code&quot;</span>] =<span class="st"> &quot;RKS&quot;</span></a>
-<a class="sourceLine" id="cb7-15" title="15"></a>
-<a class="sourceLine" id="cb7-16" title="16"><span class="co">#Give Yemen part colonized by Turkey the code for Yemen</span></a>
-<a class="sourceLine" id="cb7-17" title="17">coldata_clean[coldata_clean<span class="op">$</span>State <span class="op">==</span><span class="st"> </span><span class="dv">678</span>, <span class="st">&quot;Code&quot;</span>] =<span class="st"> &quot;YEM&quot;</span></a>
-<a class="sourceLine" id="cb7-18" title="18"></a>
-<a class="sourceLine" id="cb7-19" title="19"><span class="co">#Change name for Vietnam for clarity</span></a>
-<a class="sourceLine" id="cb7-20" title="20"><span class="kw">levels</span>(coldata_clean<span class="op">$</span>Name)[<span class="kw">levels</span>(coldata_clean<span class="op">$</span>Name)<span class="op">==</span><span class="st">&#39;Vietnam/Dem.Rep.Vietnam (North)&#39;</span>] &lt;-<span class="st"> &#39;Vietnam&#39;</span></a>
-<a class="sourceLine" id="cb7-21" title="21"></a>
-<a class="sourceLine" id="cb7-22" title="22"><span class="co">#Add codes to gdpdata2017</span></a>
-<a class="sourceLine" id="cb7-23" title="23">gdpdata<span class="op">$</span>Code &lt;-<span class="st"> </span><span class="kw">countrycode</span>(gdpdata<span class="op">$</span>Country.or.Area, <span class="dt">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="dt">destination =</span> <span class="st">&quot;iso3c&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning in countrycode(gdpdata$Country.or.Area, origin = &quot;country.name&quot;, : Some values were not matched unambiguously: Kingdom of Eswatini, Kosovo</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">#Manually fixed unmatched values</span></a>
-<a class="sourceLine" id="cb9-2" title="2">gdpdata[gdpdata<span class="op">$</span>Country.or.Area <span class="op">==</span><span class="st"> &quot;Kosovo&quot;</span>, <span class="st">&quot;Code&quot;</span>] =<span class="st"> &quot;RKS&quot;</span></a>
-<a class="sourceLine" id="cb9-3" title="3">gdpdata[gdpdata<span class="op">$</span>Country.or.Area <span class="op">==</span><span class="st"> &quot;Kingdom of Eswatini&quot;</span>, <span class="st">&quot;Code&quot;</span>] =<span class="st"> &quot;SWZ&quot;</span></a>
-<a class="sourceLine" id="cb9-4" title="4"></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#Create table merging coldata and gdp</span></a>
-<a class="sourceLine" id="cb9-6" title="6">gdp &lt;-<span class="st"> </span>gdpdata[<span class="kw">c</span>(<span class="st">&quot;Code&quot;</span>,<span class="st">&quot;Value&quot;</span>)]</a>
-<a class="sourceLine" id="cb9-7" title="7">colgdpc &lt;-<span class="st"> </span><span class="kw">merge</span>(coldata_clean, gdp, <span class="dt">by.x =</span> <span class="st">&quot;Code&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;Code&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-8" title="8"></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#Reorder Columns</span></a>
-<a class="sourceLine" id="cb9-10" title="10">cols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Code&quot;</span>, <span class="st">&quot;ColRuler&quot;</span>,<span class="st">&quot;ColRulerCode&quot;</span>, <span class="st">&quot;ColRulerName&quot;</span>, <span class="st">&quot;Value&quot;</span>)</a>
-<a class="sourceLine" id="cb9-11" title="11">colgdpc &lt;-<span class="st"> </span>colgdpc[,<span class="kw">c</span>(cols, <span class="kw">setdiff</span>(<span class="kw">names</span>(colgdpc), cols))]</a>
-<a class="sourceLine" id="cb9-12" title="12"></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#Rename value column as GDPpc2017</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="kw">names</span>(colgdpc)[<span class="dv">7</span>] &lt;-<span class="st"> &quot;GDPpc17&quot;</span></a>
-<a class="sourceLine" id="cb9-15" title="15"></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="co">#Get human capital index data and join</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co">#Source: http://hdr.undp.org/en/content/human-development-index-hdi</span></a>
-<a class="sourceLine" id="cb9-18" title="18">hdi &lt;-<span class="st"> </span><span class="kw">filter</span>(indicators, indicator_id <span class="op">==</span><span class="st"> </span><span class="dv">137506</span> <span class="op">|</span><span class="st"> </span>indicator_id <span class="op">==</span><span class="st"> </span><span class="dv">138806</span>)</a>
-<a class="sourceLine" id="cb9-19" title="19">hdi &lt;-<span class="st"> </span>hdi[,<span class="kw">c</span>(<span class="st">&quot;indicator_id&quot;</span>, <span class="st">&quot;iso3&quot;</span>,<span class="st">&quot;2017&quot;</span>)]</a>
-<a class="sourceLine" id="cb9-20" title="20">hdi &lt;-<span class="st"> </span><span class="kw">spread</span>(hdi, <span class="st">&quot;indicator_id&quot;</span>, <span class="st">&quot;2017&quot;</span>)</a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="kw">names</span>(hdi)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;HDI17&quot;</span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="kw">names</span>(hdi)[<span class="dv">3</span>] &lt;-<span class="st"> &quot;IHDI17&quot;</span></a>
-<a class="sourceLine" id="cb9-23" title="23"></a>
-<a class="sourceLine" id="cb9-24" title="24">colonialdata &lt;-<span class="st"> </span><span class="kw">merge</span>(colgdpc, hdi, <span class="dt">by.x =</span> <span class="st">&quot;Code&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;iso3&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-25" title="25"></a>
-<a class="sourceLine" id="cb9-26" title="26"><span class="co">#Get gini coefficient data and join</span></a>
-<a class="sourceLine" id="cb9-27" title="27"><span class="co">#Source http://hdr.undp.org/en/content/human-development-index-hdi</span></a>
-<a class="sourceLine" id="cb9-28" title="28"><span class="co">#id of gini coefficient = 67106</span></a>
-<a class="sourceLine" id="cb9-29" title="29"></a>
-<a class="sourceLine" id="cb9-30" title="30">gini &lt;-<span class="st"> </span><span class="kw">filter</span>(indicators, indicator_id <span class="op">==</span><span class="st"> </span><span class="dv">67106</span>)</a>
-<a class="sourceLine" id="cb9-31" title="31">gini &lt;-<span class="st"> </span>gini[,<span class="kw">c</span>(<span class="st">&quot;iso3&quot;</span>,<span class="st">&quot;9999&quot;</span>)]</a>
-<a class="sourceLine" id="cb9-32" title="32"><span class="kw">names</span>(gini)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;Gini&quot;</span></a>
-<a class="sourceLine" id="cb9-33" title="33"></a>
-<a class="sourceLine" id="cb9-34" title="34">colonialdata &lt;-<span class="st"> </span><span class="kw">merge</span>(colonialdata, gini, <span class="dt">by.x =</span> <span class="st">&quot;Code&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;iso3&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-35" title="35"></a>
-<a class="sourceLine" id="cb9-36" title="36"><span class="co">#Reorder columns</span></a>
-<a class="sourceLine" id="cb9-37" title="37">cols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;State&quot;</span>,<span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Code&quot;</span>, <span class="st">&quot;ColRulerName&quot;</span>, <span class="st">&quot;GDPpc17&quot;</span>, <span class="st">&quot;HDI17&quot;</span>, <span class="st">&quot;IHDI17&quot;</span>, <span class="st">&quot;Gini&quot;</span>)</a>
-<a class="sourceLine" id="cb9-38" title="38">colonialdata &lt;-<span class="st"> </span>colonialdata[,<span class="kw">c</span>(cols, <span class="kw">setdiff</span>(<span class="kw">names</span>(colonialdata), cols))]</a>
-<a class="sourceLine" id="cb9-39" title="39"></a>
-<a class="sourceLine" id="cb9-40" title="40"><span class="kw">write.csv</span>(colonialdata, <span class="dt">file =</span> <span class="st">&quot;Data/colonialdata.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a></code></pre></div>
-<p>Notes:
-We examined and removed several countries from this dataset for a variety of reasons – most of them are countries that no longer exist. Several were either small states that ended up merging into modern day Germany and Italy. Separating them is out of the scope of this analysis. We also removed references to North and South Vietnam since they were only separate during the war and also aren’t relavant for this analysis.</p>
-<p>We removed Zanzibar, since Tanzania is included and Zanzibar is a part of Tanzania that doesn’t have it’s own iso3 code, in fact there are two different values for Tanzania in the GDP chart, but they are both listed as Tanzania, so it seemed to make the most sense to remove Zanzibar.</p>
-<p>We removed Czechoslovakia since both Czech Republic and Slovakia are listed here and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. For a similar reason we removed Austria-Hungary as well.</p>
-<p>Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.</p>
-<p>Get and clean Angus Maddison’s data</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#Source: https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018</span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="co">#Get revised Maddison data</span></a>
-<a class="sourceLine" id="cb10-3" title="3">Mad &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Data/mpd2018.xlsx&quot;</span>,<span class="dt">sheet =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="kw">write.csv</span>(Mad, <span class="dt">file =</span> <span class="st">&quot;Data/Maddison.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb10-5" title="5"></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="co">#Source: http://www.ggdc.net/maddison/oriindex.htm</span></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="co">#Get and clean up Maddison&#39;s original data on GDP</span></a>
-<a class="sourceLine" id="cb10-8" title="8">MadO &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Data/mpdorig.xls&quot;</span>, <span class="dt">sheet =</span> <span class="dv">3</span>, <span class="dt">skip =</span> <span class="dv">2</span>)</a></code></pre></div>
-<pre><code>## New names:
-## * `` -&gt; ...1
-## * `` -&gt; ...182</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">names</span>(MadO)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;year&quot;</span></a>
-<a class="sourceLine" id="cb12-2" title="2">MadO &lt;-<span class="st"> </span>MadO[<span class="kw">rowSums</span>(<span class="kw">is.na</span>(MadO)) <span class="op">!=</span><span class="st"> </span><span class="kw">ncol</span>(MadO), ]</a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="kw">write.csv</span>(MadO, <span class="dt">file =</span> <span class="st">&quot;Data/MaddisonGDP.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb12-4" title="4"></a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="co">#Get and clean Maddison data for England (We merged data from England and the UK since information was available for England for a longer period)</span></a>
-<a class="sourceLine" id="cb12-6" title="6">MadEng &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;Data/mpd2018.xlsx&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">sheet =</span> <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb12-7" title="7">England &lt;-<span class="st"> </span><span class="kw">merge</span>( <span class="kw">filter</span>(Mad, countrycode <span class="op">==</span><span class="st"> &quot;GBR&quot;</span>)[,<span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;cgdppc&quot;</span>, <span class="st">&quot;rgdpnapc&quot;</span>)], MadEng[,<span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;cgdppc_England&quot;</span>, <span class="st">&quot;rgdpnapc_England&quot;</span>)], <span class="dt">by.x =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">all =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb12-8" title="8">England &lt;-<span class="st"> </span><span class="kw">mutate</span>(England, <span class="dt">cgdp =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(cgdppc), cgdppc_England, cgdppc ))</a>
-<a class="sourceLine" id="cb12-9" title="9">England &lt;-<span class="st"> </span><span class="kw">mutate</span>(England, <span class="dt">rgdp =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(rgdpnapc), rgdpnapc_England, rgdpnapc ))</a>
-<a class="sourceLine" id="cb12-10" title="10"><span class="kw">write.csv</span>(England, <span class="dt">file =</span> <span class="st">&quot;Data/EnglandGDPpc.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</a></code></pre></div>
-<p>The original Maddison dataset is the latest version from his original website, which included raw GDP rather than only per capita, it also went back a bit further. The other Maddison dataset comes from a project has been developing Maddison’s work since his death. These numbers are more recent/probably account for more of the historical aspects. The links to the sources provide detailed documentation/explanation of the changes and significance.</p>
-<p>For the England data, information on the UK began around 1700, but there was data for England starting from 1200. I created an England dataset with a coloumn for both rgdpnapc and cgdppc which merged the information, if data existed for the UK it has that, otherwise it has data for England if it exists. It seemed a reasonable way to look at the change of GDP overtime in England/UK especially given that it’s per capita, so an increase in population from encompassing more area would be accounted for.</p>
+<p>Since we had multiple datasets from different sources which contained data from different time periods and countries, a primary concern was structuring the datasets such that it would be easy to join them as needed for analysis that interested us while feeling secure that we weren’t lose information from mismatched names and the like. For example, when we initially joined the colonial history dataset and modern GDP’s there were issues with countries being named differently that resulted in data loss. Our strategy was to include the iso3 country code for each dataset so that we could easily join datasets on country code whenever needed.</p>
+<div id="colonial-history-data-and-adding-gdphdigini-indicators" class="section level2">
+<h2><span class="header-section-number">3.1</span> Colonial History Data and Adding GDP/HDI/Gini Indicators</h2>
+<p>The colonial history dataset included several countries that no longer exist in modern day or that aren’t usually differed to as a separate country. We examined and removed several countries from this dataset for these kinds of reasons.</p>
+<p>Countries removed:</p>
+<ul>
+<li>Small states that ended up merging to form Germany and Italy (Germany and Italy are in the dataset).
+North and South Vietnam since they were only separate during the war (Vietnam is in the the dataset).</li>
+<li>Zanzibar. Tanzania is included, in fact the modern GDP datset has Tanzania listed twice with too different values (one of these may represent Zanzibar), but given the breadth of this analysis it seemed to make the most sense to remove Zanzibar, and allow Tanzania to be included twice.</li>
+<li>Czechoslovakia. Both Czech Republic and Slovakia are included in the dataset and since the goal is to compare with on modern data it makes sense to look at these states as they are currently.</li>
+<li>Austria-Hungary. Both Austria and Hungary and included separately in the dataset.</li>
+<li>Yemen (one variant). Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.</li>
+<li>Korea (unified). This no longer exists and both North and South Korea are included in the dataset.</li>
+</ul>
+<p>Since the dataset with the current per capita GDP, Gini Coefficient, and HDI included iso3 codes, merging them was simple at this point.</p>
+</div>
+<div id="angus-maddison-dataset" class="section level2">
+<h2><span class="header-section-number">3.2</span> Angus Maddison Dataset</h2>
+<p>The Maddison dataset comes from a project has been developing Maddison’s work since his death. These numbers are the most updated versions including recent historical work. The links to the sources provide detailed documentation/explanation of the changes and significance.</p>
+<p>The dataset had information on England starting from 1200 while information on the UK began around 1700 (there was overlap with information listed for both England and UK). We dealt with this by creating an England dataset with a coloumn for both rgdpnapc and cgdppc (see the data section for an explanation as to the meaning of these values, we ended up only using cgdppc) which merged the UK and England information. If data existed for the UK that is what’s included, otherwise information on England is included if it exists. This seemed a reasonable way to look at the change of GDP overtime in England/UK especially given that it’s per capita, so an increase in population from encompassing more area would be accounted for.</p>
+</div>
+<div id="colonial-transformation-dataset-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> Colonial Transformation Dataset</h2>
+<p>We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the column names for ease of use. They were originally named with over 35-character-long strings that described the indicators and their ranges in detail. We encoded these names with abbreviations, the meanings of which can be found on our github. “PT” indicators are markers of political transformation, “ST” of social transformation, “ET” economic transformation, and “CT” overall colonial transformations. Description of the indicators at large is available on the source website, and a summary of the variable encoding is included on our github in /src.</p>
 
+</div>
 </div>
             </section>
 
@@ -314,7 +189,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/master/03-cleaning.Rmd",
+"link": "https://github.com/mdlngeorges/colonization/edit/master/03-cleaning.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -322,7 +197,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/master/03-cleaning.Rmd",
+"link": "https://github.com/mdlngeorges/colonization/blob/master/03-cleaning.Rmd",
 "text": null
 },
 "download": null,
