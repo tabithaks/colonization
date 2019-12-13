@@ -11,9 +11,6 @@ library(reshape2)
 library(RColorBrewer)
 ```
 
-## Indicators by Colonizing Country
-
-###Get data
 
 ```{r}
 colonialdata <- read.csv("Data/clean/colonialdata.csv")
@@ -24,7 +21,7 @@ transformations <- read.csv("Data/clean/transformations.csv")
 ColTrans <- merge(transformations, colonialdata, by.x = "Code", by.y = "Code", all.x = TRUE)
 ```
 
-### Average GDP, Gini Coefficient, and Human Development Index by Colonized Country
+## Average GDP per capita by Colonizing Country
 ```{r}
 #Look at average GDP per capita 2017 by colonized country
 
@@ -47,6 +44,7 @@ print(colgdpNT)
 
 This graph shows that the average 2017 per capita gdp of countries that were never colonized is far greater than the average per capita GDP of countries that were colonized. The only group that comes close is the countries colonized by the Netherlands. The reason for this is likely that the Netherlands' colonies include Belgium and Luxembourg, both of which have quite high per capita gdp's currently. It's likely that in order to understand this we would have to delve into the history of Netherlands, Belgium and Lexumbourg, when they were colonized, what that colonial relationship looked like and when they became independent. Interestingly enough when we look at the lower end of the graph, Belgium's colonies (it was both colonized and a colonial power) have the lowest current GDP's. It's interesting to note that the Belgium has a reputation for being a particularly cruel colonial power.
 
+## Average Gini Coefficient and HDI by Colonizining Country
 ```{r}
 ginirule <- colonialdata %>% group_by(ColRulerName) %>% summarize(mean_gini = mean(Gini, na.rm = TRUE))
 ginirule$ColRulerName <- factor(ginirule$ColRulerName, levels = 
@@ -74,7 +72,7 @@ print(colJ)
 
 While we can see here that Austria-Hungary colonized Czech Republic, Croatia, Slovakia, and Slovenia, which all have similar relatively low Gini coefficients, and thus the average is representative of the circumstance of countries colonized by Austria-Hungary. When we look into Japan's colonies, there is North Korea and South Korea, but information on both HDI17 and Gini coeffieicent only exists for South Korea, therefore the average is essentially the gini coefficient and HDI of South Korea. Clearly, this demonstrates an issues with the data -- due to the many missing values, drawing conclusions from the averages may be tricky. And although a across time comparison would be fascinating, again the availability of the data is difficult. What seems to be fairly clear is that colonialism doesn't appear to have an extremely strong impact on the current gini coefficient and HDI's of countries. That isn't to say that there is no impact, but there isn't a strong enough one for it's effect to be readily apparent from the limited data available. While the non economic impacts of colonialism remains an interesting question, the results of looking at these indicators are not strong enough for any commentary.
 
-##GDP Over Time
+## GDP per capita Over Time
 
 ```{r warning=FALSE}
 #England's GDP overtime
@@ -92,7 +90,7 @@ Unsurprisingly, it seems that large historical trends come out clearly in this d
 Let's see if we can uncover anything about England's GDP versus those of its colonies.
 
 ```{r}
-England <- mutate(England, country = "England/UK")
+England <- mutate(England, country = "England/UK") #this column was added simply for labelling purposes (to be included in the legend)
 ggplot() + geom_line(data = filter(England, year >= 1800), aes(x = year, y = log(cgdp), col = factor(country))) + geom_line(data = filter(ColMad, ColRulerName == "United Kingdom" & year >= 1800), aes(x = year, y = log(cgdppc), col = country))
 ```
 
@@ -109,7 +107,7 @@ Again the limitation of the data becomes apparent, although Sri Lanka had data e
 
 However, interesting observation is that the GDP of South Africa is greater than that of the UK until about 1800, which is around when South Africa became a colony of the UK. Prior to that South Africa was actually a colony of the Netherlands. Making any kind of statement based on this is clearly difficult, the UK's GDP may have been increasing because of the colonization of other countries and the industrial revolution is likely a factor as well. And the reason that the UK was able to take control of South Africa from the Netherlands is another question. However the fact that we can see the GDP of South Africa decreasing at this time indicates it may be interest to compare the UK's colonial policies regarding South Africa differed from those of the Netherlands. Or if perhaps it had anything to do with the demand of the kinds of goods/agriculture/etc South Africa supplied changing. Essentially this suggests an area of potential further historical analysis.
 
-## GDP by years colonized
+## GDP per capita by Years Colonized
 ```{r}
 ggplot(ColTrans, aes(x = Duration, y = GDPpc17, label = Name)) + geom_point() + labs(title = "Number of Years Colonized and per capita GDP, 2017", x = "Years Colonized", y = "GDP per capita") + geom_text(data = subset(ColTrans, GDPpc17 > 10000), vjust = -0.5, hjust = -0.1)
 ```
@@ -118,7 +116,8 @@ We then looked at the relationship between the number of years a country was col
 
 ## Indicators of Colonization
 
-The multiple indicators 
+### Variables Across Country and Colonizers
+
 Plotting a parcoords of all 20-something variable definitely fails into overplotting, so we displayed the 'summary indicators', Political/Economical/Social Transformation level, which have the benefit of 1) containing the general patterns of other variables 2) being already linearly scaled to 0-100 values. We plotted them against the gdp, as an (imperfect) metric of current performance of the country.
 
 ```{r}
