@@ -1,21 +1,19 @@
 # Data sources
 
-## The ICOW Colonial History Data Set
+## Colonial History Dataset
 
 Data can be found [here](https://www.paulhensel.org/icowcol.html) 
 
-The Colonial History Data Set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended.
+The colonial history data set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended. Several colonies were controlled by different colonial powers over the years, in our analysis we focused on the principal colonial ruler, as designated by the dataset, on the assumption that that country would have had the biggest effect on the colony.
 
 **Variables of the Colonial History Data Set**
 
 ```{r echo=FALSE}
 coldata <- read.csv("Data/raw/coldata110.csv")
-
 colnames(coldata)
 ```
 
-
-## Indicators (GDP, Gini, HDI)
+## Current Indicators Data (GDP, Gini, HDI)
 
 We obtained worldwide GDP per capita data in 2017. This dataset can be found [here](https://databank.worldbank.org/home.aspx). 
 
@@ -30,15 +28,15 @@ Gini Coefficient: Measurement of inequality, the higher the value, the more uneq
 
 HDI: Stands for human development index. A higher value represents a higher quality of life. Details regarding how this index is calculated and what it measures can be found [here](http://hdr.undp.org/en/content/human-development-index-hdi)
 
-### Angus Maddison
+##  Angus Maddison Dataset: GDP Over Time
 
-The dataset can be found [here](https://www.rug.nl/ggdc/historicaldevelopment/maddison/)
+The dataset we used to look at GDP over time can be found [here](https://www.rug.nl/ggdc/historicaldevelopment/maddison/)
 
-This dataset consists of countries and their estimated per capita GDP's overtime. This work is a continuation of that done by Angus Maddison. They provide two types of per capita GDP, one consistent with growthrates and another that ensured the comparative value of goods in a single year was consistent. We chose to make comparisons using measurement since it seemed more appropriate since we were interested in comparing per capita GDP, rather than growth rate. This decision was made based on the documentation provided on the website.
+This dataset consists of countries and their estimated per capita GDP's overtime. The Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are the most updated versions including recent historical work. The links to the sources provide detailed documentation/explanation of the changes and significance. They provide two types of per capita GDP, one consistent with growthrates and another that ensured the comparative value of goods in a single year was consistent. We chose to use the latter measurement since it seemed more appropriate given our interest in comparing per capita GDP, rather than growth rate. This decision was made based on the documentation provided with the data.
 
-We used this data to see if we could look at the economic impact of colonialism overtime and see any patterns. The difficulty of course, was the limitations of what data was available, its accuracy. Ideally we would have liked to look at the GDP for a few countries from prior to colonization, during colonization and after. The difficulty of that is the prior to colonization part, and some of the years during colonization -- for the vast majority of countries information during this period is unavailable. This makes sense as the world looked very different now, and modern countries frequently didn't exist. However, we did our best to use what we had to explore how the economic situation changed overtime.
+We used this data to see if we could look at the economic impact of colonialism overtime and see any patterns. Ideally we would have liked to look at the per capita GDP for a few countries prior to colonization, during colonization, and after colonization. The prior to colonization time period and some of the years during colonization, proved to be difficult as for the vast majority of countries this information is unavailable. In fact, yearly data for many countries only begins around 1950, when colonization ended. This makes sense as the world looked very different then, modern countries frequently didn't exist, and the level of economic integration. However, it did limit our ability to analyze changes over time. We did our best to use what we had to investigate how countries' economic situation changed over time and possible relationships with colonialism.
 
-## 
+## Colonial Transformation Dataset
 
 Data can be found [here](https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia) 
 
