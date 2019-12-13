@@ -1,9 +1,9 @@
 # Data transformation
 
+Since we had multiple datasets from different sources which contained data from different time periods and countries, a primary concern was structuring the datasets such that it would be easy to join them as needed for analysis that interested us while feeling secure that we weren't lose information from mismatched names and the like. For example, when we initially joined the colonial history dataset and modern GDP's there were issues with countries being named differently that resulted in data loss. Our strategy was to include the iso3 country code for each dataset so that we could easily join datasets on country code whenever needed.
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
 ```
-
 
 ```{r warning=FALSE, echo=FALSE, eval=FALSE}
 library(ggplot2)
@@ -17,8 +17,6 @@ library(parcoords)
 library(extracat)
 ```
 
-
-## Load the data
 ```{r warning=FALSE, eval=FALSE}
 coldata <- read.csv("Data/raw/coldata110.csv")
 gdpdata <- read.csv("Data/raw/UNGDP.csv")
@@ -26,9 +24,7 @@ stateabs <- read.csv("Data/raw/states2016.csv")
 indicators <- read_excel("Data/raw/2018_all_indicators.xlsx",sheet = 1)
 ```
 
-## Cleaning Colonization Data and adding GDP/HDI/Gini indicators
 ```{r warning=FALSE, eval=FALSE}
-
 #Clean coldata
 coldata_clean <- coldata
 coldata_clean$Code <- countrycode(coldata$Name,origin='country.name',destination = 'iso3c')
@@ -104,31 +100,28 @@ colonialdata <- colonialdata[,c(cols, setdiff(names(colonialdata), cols))]
 
 write.csv(colonialdata, file = "Data/clean/colonialdata.csv", row.names=FALSE)
 ```
+## Cleaning Colonial History Data and Adding GDP/HDI/Gini Indicators
+The colonial history dataset included several countries that no longer exist in modern day or that aren't usually differed to as a separate country. We examined and removed several countries from this dataset for these kinds of reasons. 
 
-## Country-specific cleaning
+Countries removed:
 
-We examined and removed several countries from this dataset for a variety of reasons -- most of them are countries that no longer exist. Several were either small states that ended up merging into modern day Germany and Italy. Separating them is out of the scope of this analysis. We also removed references to North and South Vietnam since they were only separate during the war and also aren't relavant for this analysis.
+-Small states that ended up merging to form Germany and Italy (Germany and Italy are in the dataset).
+-North and South Vietnam since they were only separate during the war (Vietnam is in the the dataset).
+-Zanzibar. Tanzania is included, in fact the modern GDP datset has Tanzania listed twice with too different values (one of these may represent Zanzibar), but given the breadth of this analysis it seemed to make the most sense to remove Zanzibar, and allow Tanzania to be included twice.
+-Czechoslovakia. Both Czech Republic and Slovakia are included in the dataset and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. 
+-Austria-Hungary. Both Austria and Hungary and included separately in the dataset.
+-Yemen (one variant). Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.
+-Korea (unified). This no longer exists and both North and South Korea are included in the dataset.
 
-We removed Zanzibar, since Tanzania is included and Zanzibar is a part of Tanzania that doesn't have it's own iso3 code, in fact there are two different values for Tanzania in the GDP chart, but they are both listed as Tanzania, so it seemed to make the most sense to remove Zanzibar.
+Since the dataset with the current per capita GDP, Gini Coefficient, and HDI included iso3 codes, merging them was simple at this point.
 
-We removed Czechoslovakia since both Czech Republic and Slovakia are listed here and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. For a similar reason we removed Austria-Hungary as well.
-
-Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.
-
-## The Angus Maddison dataset for GDP
+## Angus Maddison Dataset
 
 ```{r warning=FALSE, eval=FALSE}
 #Source: https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018
 #Get revised Maddison data
 Mad <- read_excel("Data/raw/mpd2018.xlsx",sheet = 2)
 write.csv(Mad, file = "Data/clean/Maddison.csv", row.names=FALSE)
-
-#Source: http://www.ggdc.net/maddison/oriindex.htm
-#Get and clean up Maddison's original data on GDP
-MadO <- read_excel("Data/raw/mpdorig.xls", sheet = 3, skip = 2)
-names(MadO)[1] <- "year"
-MadO <- MadO[rowSums(is.na(MadO)) != ncol(MadO), ]
-write.csv(MadO, file = "Data/clean/MaddisonGDP.csv", row.names=FALSE)
 
 #Get and clean Maddison data for England (We merged data from England and the UK since information was available for England for a longer period)
 MadEng <- read_excel("Data/mpd2018.xlsx", skip = 1, sheet = 8)
@@ -142,14 +135,13 @@ ColMad <- merge(colonialdata, Mad, by.x = "Code", by.y = "countrycode")
 write.csv(ColMad, file = "Data/clean/ColMad.csv", row.names = FALSE)
 ```
 
-The original Maddison dataset is the latest version from his original website, which included raw GDP rather than only per capita, it also went back a bit further. The other Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are more recent/probably account for more of the historical aspects. The links to the sources provide detailed documentation/explanation of the changes and significance.
+The Maddison dataset comes from a project has been developing Maddison's work since his death. These numbers are the most updated versions including recent historical work. The links to the sources provide detailed documentation/explanation of the changes and significance.
 
-For the England data, information on the UK began around 1700, but there was data for England starting from 1200. I created an England dataset with a coloumn for both rgdpnapc and cgdppc which merged the information, if data existed for the UK it has that, otherwise it has data for England if it exists. It seemed a reasonable way to look at the change of GDP overtime in England/UK especially given that it's per capita, so an increase in population from encompassing more area would be accounted for.
+The dataset had information on England starting from 1200 while information on the UK began around 1700 (there was overlap with information listed for both England and UK). We dealt with this by creating an England dataset with a coloumn for both rgdpnapc and cgdppc (see the data section for an explanation as to the meaning of these values, we ended up only using cgdppc) which merged the UK and England information. If data existed for the UK that is what's included, otherwise information on England is included if it exists. This seemed a reasonable way to look at the change of GDP overtime in England/UK especially given that it's per capita, so an increase in population from encompassing more area would be accounted for.
 
+## Colonial Transformation Dataset
 
-## Factors of Colonial Transformation
-
-The main concern here was to remain consistent in country notations. We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the columns for ease of use, as they were named after over 35-character-long strings that described the indicators and its range in great detail. The encoding can be found on our github and is specified in each relevant. One can remember that PT1/ET1/ST1 stand for Political/Economic/Social Transformation Indicator 1, and V stand for observed violence.
+We used the countrycode R library again to match the ISO 3-char codes with those used in the colonial dataset. We then cleaned the column names for ease of use. They were originally named with over 35-character-long strings that described the indicators and their ranges in detail. We encoded these names with abbreviations, the meanings of which can be found on our github. In our analysis primarily look at PT1/ET1/ST1 which stand for Political/Economic/Social Transformation Indicator 1, and V stands for observed violence.
 
 ```{r, eval=FALSE}
 transfo_raw <- read.csv("Data/raw/Colonial_transformation_data.csv")
@@ -193,4 +185,5 @@ transformations$Code <- as.character(transformations$Code)
 write.csv(transformations, file = "Data/clean/transformations.csv", row.names=FALSE)
 ```
 
-The cleaning has been done to facilitate comparison of the factors in both datasets for the same country; however we deemed that merging the two datasets would not be very practical for our use cases. Furthermore, the transformations dataset only concerns itself with colonized countries. Merging would therefore artificially induce a great number of NAs because of the presence of non-colonized countries in the colonisation dataset, which would cloud the missing data analysis that follow. So, we chose to keep them separate.
+--- I think we need to remove this section because we do merge them while we do the analysis. I think it makes sense to keep them separate until we need to merge them though, we can prob just leave this out and be fine ---
+The cleaning facilitated comparison of the factors in both datasets for the same country; however we deemed that merging the two datasets would not be very practical for our use cases. Furthermore, the transformations dataset only concerns itself with colonized countries. Merging would therefore artificially induce a great number of NAs because of the presence of non-colonized countries in the colonisation dataset, which would cloud the missing data analysis that follow. So, we chose to keep them separate.
