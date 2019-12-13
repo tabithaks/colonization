@@ -100,18 +100,18 @@ colonialdata <- colonialdata[,c(cols, setdiff(names(colonialdata), cols))]
 
 write.csv(colonialdata, file = "Data/clean/colonialdata.csv", row.names=FALSE)
 ```
-## Cleaning Colonial History Data and Adding GDP/HDI/Gini Indicators
+## Colonial History Data and Adding GDP/HDI/Gini Indicators
 The colonial history dataset included several countries that no longer exist in modern day or that aren't usually differed to as a separate country. We examined and removed several countries from this dataset for these kinds of reasons. 
 
 Countries removed:
 
--Small states that ended up merging to form Germany and Italy (Germany and Italy are in the dataset).
--North and South Vietnam since they were only separate during the war (Vietnam is in the the dataset).
--Zanzibar. Tanzania is included, in fact the modern GDP datset has Tanzania listed twice with too different values (one of these may represent Zanzibar), but given the breadth of this analysis it seemed to make the most sense to remove Zanzibar, and allow Tanzania to be included twice.
--Czechoslovakia. Both Czech Republic and Slovakia are included in the dataset and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. 
--Austria-Hungary. Both Austria and Hungary and included separately in the dataset.
--Yemen (one variant). Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.
--Korea (unified). This no longer exists and both North and South Korea are included in the dataset.
+* Small states that ended up merging to form Germany and Italy (Germany and Italy are in the dataset).
+North and South Vietnam since they were only separate during the war (Vietnam is in the the dataset).
+* Zanzibar. Tanzania is included, in fact the modern GDP datset has Tanzania listed twice with too different values (one of these may represent Zanzibar), but given the breadth of this analysis it seemed to make the most sense to remove Zanzibar, and allow Tanzania to be included twice.
+* Czechoslovakia. Both Czech Republic and Slovakia are included in the dataset and since the goal is to compare with on modern data it makes sense to look at these states as they are currently. 
+* Austria-Hungary. Both Austria and Hungary and included separately in the dataset.
+* Yemen (one variant). Yemen had three variants, two of which were colonized by the UK, and the other which was colonized with Turkey. We removed one of the UK variants, and gave the Yemen colonized by Turkey the countrycode for modern day Yemen. We felt that without deep knowledge of the political history of Yemen, this was the best choice we could make for the sake of investigating impact of colonialism by colonizing country.
+* Korea (unified). This no longer exists and both North and South Korea are included in the dataset.
 
 Since the dataset with the current per capita GDP, Gini Coefficient, and HDI included iso3 codes, merging them was simple at this point.
 
@@ -184,6 +184,3 @@ transformations$Code <- as.character(transformations$Code)
 ```{r, eval=FALSE}
 write.csv(transformations, file = "Data/clean/transformations.csv", row.names=FALSE)
 ```
-
---- I think we need to remove this section because we do merge them while we do the analysis. I think it makes sense to keep them separate until we need to merge them though, we can prob just leave this out and be fine ---
-The cleaning facilitated comparison of the factors in both datasets for the same country; however we deemed that merging the two datasets would not be very practical for our use cases. Furthermore, the transformations dataset only concerns itself with colonized countries. Merging would therefore artificially induce a great number of NAs because of the presence of non-colonized countries in the colonisation dataset, which would cloud the missing data analysis that follow. So, we chose to keep them separate.
