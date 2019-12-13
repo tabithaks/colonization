@@ -1,6 +1,6 @@
 # Results
 
-```{r echo=FALSE}
+```{r echo=FALSE,eval=FALSE}
 library(tidyr)
 library(tidyverse)
 library(dplyr)
@@ -20,8 +20,8 @@ colonialdata <- read.csv("Data/clean/colonialdata.csv")
 Mad <- read.csv("Data/clean/Maddison.csv")
 ColMad <- read.csv("Data/clean/ColMad.csv")
 England <- read.csv("Data/clean/EnglandGDPpc.csv")
-Transformations <- read.csv("Data/clean/transformations.csv")
-ColTrans <- merge(Transformations, colonialdata, by.x = "Code", by.y = "Code", all.x = TRUE)
+transformations <- read.csv("Data/clean/transformations.csv")
+ColTrans <- merge(transformations, colonialdata, by.x = "Code", by.y = "Code", all.x = TRUE)
 ```
 
 ### Average GDP, Gini Coefficient, and Human Development Index by Colonized Country
@@ -44,6 +44,7 @@ colgdpNT <- filter(colonialdata, ColRuler == 210)[c("Name")]
 print("Countries Colonized by the Netherlands")
 print(colgdpNT)
 ```
+
 This graph shows that the average 2017 per capita gdp of countries that were never colonized is far greater than the average per capita GDP of countries that were colonized. The only group that comes close is the countries colonized by the Netherlands. The reason for this is likely that the Netherlands' colonies include Belgium and Luxembourg, both of which have quite high per capita gdp's currently. It's likely that in order to understand this we would have to delve into the history of Netherlands, Belgium and Lexumbourg, when they were colonized, what that colonial relationship looked like and when they became independent. Interestingly enough when we look at the lower end of the graph, Belgium's colonies (it was both colonized and a colonial power) have the lowest current GDP's. It's interesting to note that the Belgium has a reputation for being a particularly cruel colonial power.
 
 ```{r}
@@ -75,15 +76,17 @@ While we can see here that Austria-Hungary colonized Czech Republic, Croatia, Sl
 
 ##GDP Over Time
 
-```{r}
+```{r warning=FALSE}
 #England's GDP overtime
 ggplot(filter(England, year >= 1250), aes(x = year, y = cgdp)) + geom_point() + labs(title = "England/UK's GDP over time")
 ```
+
 It's clear that England's GDP increased drastically following the 1800s, but the reason for that is less clear. The 1800s was also the period of the industrial revolution, which had a huge impact in Europe and then the rest of the world. But it's possible that the resources England was able to gain as a colonial power spurred the industrial revolution as well. That's a question that needs historical analysis, in addition to data analysis. But it is clear that as England became a colonial power its GDP increased. There are however a few small drops that occur in the 1900s. Let's look at the time period between 1900 and 1950 (post World War II all colonial countries gave up their colonies).
 
 ```{r}
 ggplot(filter(England, year >= 1900 & year <= 1950), aes(x = year, y = cgdp)) + geom_point() + labs(title = "England/UK's GDP over time")
 ```
+
 Unsurprisingly, it seems that large historical trends come out clearly in this data. There is a drop in GDP following World War I, the 30s -- corresponding to the great depression, and post World War II. Of course it's at this point that England lost all it's colonies. It is however, worth noting that England's ability to benefit from their colonies was likely decreasing for a longtime prior to this.
 
 Let's see if we can uncover anything about England's GDP versus those of its colonies.
@@ -92,6 +95,7 @@ Let's see if we can uncover anything about England's GDP versus those of its col
 England <- mutate(England, country = "England/UK")
 ggplot() + geom_line(data = filter(England, year >= 1800), aes(x = year, y = log(cgdp), col = factor(country))) + geom_line(data = filter(ColMad, ColRulerName == "United Kingdom" & year >= 1800), aes(x = year, y = log(cgdppc), col = country))
 ```
+
 Even restricted to a narrower timeframe, there are too many countries to really interpret this graph. In fact, we can see that much information because at 1950, exactly after the end of colonialism. This makes comparing how a country fared before and after colonialism very difficult. So we'll pull a few countries out based on what we have data for (these were determined from the missing values analysis).
 
 ```{r}
@@ -100,6 +104,7 @@ ggplot() + geom_line(data = filter(England, year >= 1600 & year <= 1950), aes(x 
 #ggplot() + geom_line(data = filter(ColMad, ((country == "South Africa" | country == "Sri Lanka" | country == "United States") & year >= 1600 & year <= 1950)), aes(x = year, y = cgdppc, col = country)) + stat_function(data = filter(England, year >= 1600 & year <= 1950), fun = cos, aes(color = "cos"))
 
 ```
+
 Again the limitation of the data becomes apparent, although Sri Lanka had data extending farther back than many countries it still is fairly limited, understanding the impacts of colonialism overtime from data is clearly a problematic endeavour due to the lack of data available. And making any kind of statement as to trends is impossible since we have strong selection bias regarding what we looked at more closely -- what data was available, which does not give us an accurate picture of the situation as a whole.
 
 However, interesting observation is that the GDP of South Africa is greater than that of the UK until about 1800, which is around when South Africa became a colony of the UK. Prior to that South Africa was actually a colony of the Netherlands. Making any kind of statement based on this is clearly difficult, the UK's GDP may have been increasing because of the colonization of other countries and the industrial revolution is likely a factor as well. And the reason that the UK was able to take control of South Africa from the Netherlands is another question. However the fact that we can see the GDP of South Africa decreasing at this time indicates it may be interest to compare the UK's colonial policies regarding South Africa differed from those of the Netherlands. Or if perhaps it had anything to do with the demand of the kinds of goods/agriculture/etc South Africa supplied changing. Essentially this suggests an area of potential further historical analysis.
