@@ -21,7 +21,11 @@ From this, it seems that most countries have values for most data. There are a f
 
 Per capita GDP has a single missing value for Taiwan, I'm not very sure why this is the case, it just wasn't part of the UN dataset. This might have to do with the China-Taiwan conflict.
 
-The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised me, I expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because I felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, I was surprised that there was so much missing information on the subject
+The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised us, we expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because we felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, we was surprised that there was so much missing information on the subject.
+
+When graphing in comparison to GDP per capita, HDI, and gini coefficient we chose to deal with missing values by omitting them, since we felt that discussing them extensively here gives an effective sense of what the graphs we provide actually include, and since there are many missing values for some of these indicators including them in the actual graph ends up being distracting without contributing anything. That is since so many countries are involved and NA column would not really help us interpret the data.
+
+As a note, for the sake of brevity, we did not include IHDI in our final results.
 
 ## Angus Maddison Dataset
 
@@ -78,7 +82,7 @@ In the graph that provides a closer look at country's per capita GDP's after 180
  Australia,
  Argentina
 
-These are some countries that would likely be more interesting to look at in terms of gdp overtime, simply because the data is more available.
+These are some countries that would likely be more interesting to look at in terms of gdp overtime, simply because the data is more available. 
 
 ### England Dataset
 ```{r}
@@ -91,6 +95,7 @@ ggplot(missvalues, aes(x = key, y=year, fill = missing)) +geom_tile(color ="whit
 
 Examining the GDP data available for England we can see that, while there are values at 0, 500, and 1000, a great deal of data in that time period doesn't appear. This information is not colored yellow for missing simply because those years are not even listed in the dataset. Because the rgdp and cgdp columns combine information on England and the UK they have the most filled values, including every year from about 1200 onwards. We use this data to examine the per capita gdp of England overtime
 
+Again when working with the Maddison data we chose to omit missing values from views because we felt that we discussed their impact in detail here, and in the analysis, so including them in the actual graphs would be both redundant and distracting.
 
 ## Colonial Transformation Dataset
 ```{r}

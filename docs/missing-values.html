@@ -94,9 +94,9 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
 <li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#average-gdp-per-capita-by-colonizing-country"><i class="fa fa-check"></i><b>5.1</b> Average GDP per capita by Colonizing Country</a></li>
-<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#average-gini-coefficient-and-hdi-by-colonizining-country"><i class="fa fa-check"></i><b>5.2</b> Average Gini Coefficient and HDI by Colonizining Country</a></li>
-<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#gdp-per-capita-over-time"><i class="fa fa-check"></i><b>5.3</b> GDP per capita Over Time</a></li>
-<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#gdp-per-capita-by-years-colonized"><i class="fa fa-check"></i><b>5.4</b> GDP per capita by Years Colonized</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#gdp-per-capita-by-years-colonized"><i class="fa fa-check"></i><b>5.2</b> GDP per capita by Years Colonized</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#average-gini-coefficient-and-hdi-by-colonizining-country"><i class="fa fa-check"></i><b>5.3</b> Average Gini Coefficient and HDI by Colonizining Country</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#england-and-its-colonies-gdp-per-capita-over-time"><i class="fa fa-check"></i><b>5.4</b> England and Its Colonies: GDP per capita Over Time</a></li>
 <li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#indicators-of-colonization"><i class="fa fa-check"></i><b>5.5</b> Indicators of Colonization</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="results.html"><a href="results.html#variables-across-country-and-colonizers"><i class="fa fa-check"></i><b>5.5.1</b> Variables Across Country and Colonizers</a></li>
 <li class="chapter" data-level="5.5.2" data-path="results.html"><a href="results.html#correlations-of-variables-covariance-matrix"><i class="fa fa-check"></i><b>5.5.2</b> Correlations of variables (covariance matrix)</a></li>
@@ -130,7 +130,9 @@
 <p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 From this, it seems that most countries have values for most data. There are a few missing values in ColRulerCode, this is because some countries were colonized by Austria-Hungary, which does not now exist and therefore has no iso3 code.</p>
 <p>Per capita GDP has a single missing value for Taiwan, I’m not very sure why this is the case, it just wasn’t part of the UN dataset. This might have to do with the China-Taiwan conflict.</p>
-<p>The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised me, I expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because I felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, I was surprised that there was so much missing information on the subject</p>
+<p>The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised us, we expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because we felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, we was surprised that there was so much missing information on the subject.</p>
+<p>When graphing in comparison to GDP per capita, HDI, and gini coefficient we chose to deal with missing values by omitting them, since we felt that discussing them extensively here gives an effective sense of what the graphs we provide actually include, and since there are many missing values for some of these indicators including them in the actual graph ends up being distracting without contributing anything. That is since so many countries are involved and NA column would not really help us interpret the data.</p>
+<p>As a note, for the sake of brevity, we did not include IHDI in our final results.</p>
 </div>
 <div id="angus-maddison-dataset-1" class="section level2">
 <h2><span class="header-section-number">4.2</span> Angus Maddison Dataset</h2>
@@ -178,6 +180,7 @@ Argentina</p>
 <h3><span class="header-section-number">4.2.2</span> England Dataset</h3>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Examining the GDP data available for England we can see that, while there are values at 0, 500, and 1000, a great deal of data in that time period doesn’t appear. This information is not colored yellow for missing simply because those years are not even listed in the dataset. Because the rgdp and cgdp columns combine information on England and the UK they have the most filled values, including every year from about 1200 onwards. We use this data to examine the per capita gdp of England overtime</p>
+<p>Again when working with the Maddison data we chose to omit missing values from views because we felt that we discussed their impact in detail here, and in the analysis, so including them in the actual graphs would be both redundant and distracting.</p>
 </div>
 </div>
 <div id="colonial-transformation-dataset-2" class="section level2">
