@@ -23,7 +23,6 @@ Per capita GDP has a single missing value for Taiwan, I'm not very sure why this
 
 The gini coefficient and human development index adjusted for inequality (IHDI) both have many missing values. That IHDI had more missing values than the human development index (HDI) surprised me, I expected that both HDI and IHDI to have more many, but about the same amount of missing values, and to have more missing values than the gini coefficient. This is because I felt that since HDI requires a combination of information it would be less available. Instead it seems that information regarding inequality is the least available, since this is fairl numeric (involving incomes/wealth) that tend to be reasonably well documented due to taxation, I was surprised that there was so much missing information on the subject
 
-
 ## England per Capita GDP overtime (part of Angus Maddison Dataset)
 ```{r}
 England <- read.csv("Data/clean/EnglandGDPpc.csv")
