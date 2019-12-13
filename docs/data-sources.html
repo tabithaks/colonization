@@ -99,7 +99,7 @@
 <li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#gdp-per-capita-by-years-colonized"><i class="fa fa-check"></i><b>5.4</b> GDP per capita by Years Colonized</a></li>
 <li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#indicators-of-colonization"><i class="fa fa-check"></i><b>5.5</b> Indicators of Colonization</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="results.html"><a href="results.html#variables-across-country-and-colonizers"><i class="fa fa-check"></i><b>5.5.1</b> Variables Across Country and Colonizers</a></li>
-<li class="chapter" data-level="5.5.2" data-path="results.html"><a href="results.html#correlations-of-variables-covariance-matrixes"><i class="fa fa-check"></i><b>5.5.2</b> Correlations of variables (covariance matrixes)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="results.html"><a href="results.html#correlations-of-variables-covariance-matrix"><i class="fa fa-check"></i><b>5.5.2</b> Correlations of variables (covariance matrix)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
@@ -127,7 +127,8 @@
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
 <div id="colonial-history-dataset" class="section level2">
 <h2><span class="header-section-number">2.1</span> Colonial History Dataset</h2>
-<p>Data can be found <a href="https://www.paulhensel.org/icowcol.html">here</a></p>
+<p><strong>Source :</strong>
+Paul R. Hensel (2018). “ICOW Colonial History Data Set, version 1.1.” Available at <a href="http://www.paulhensel.org/icowcol.html" class="uri">http://www.paulhensel.org/icowcol.html</a>.</p>
 <p>The colonial history data set contains colonial information for over 200 countries, including, if they were colonized, their principal Colonial Ruler, the years that this colonial domination began and formally ended. Several colonies were controlled by different colonial powers over the years, in our analysis we focused on the principal colonial ruler, as designated by the dataset, on the assumption that that country would have had the biggest effect on the colony.</p>
 <p><strong>Variables of the Colonial History Data Set</strong></p>
 <pre><code>##  [1] &quot;State&quot;    &quot;Name&quot;     &quot;ColRuler&quot; &quot;IndFrom&quot;  &quot;IndDate&quot;  &quot;IndViol&quot; 
@@ -136,8 +137,9 @@
 </div>
 <div id="current-indicators-data-gdp-gini-hdi" class="section level2">
 <h2><span class="header-section-number">2.2</span> Current Indicators Data (GDP, Gini, HDI)</h2>
-<p>We obtained worldwide GDP per capita data in 2017. This dataset can be found <a href="https://databank.worldbank.org/home.aspx">here</a>.</p>
-<p>We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information <a href="http://hdr.undp.org/en/data">here</a>
+<p>Worldwide GDP per capita data in 2017.
+Source: <a href="https://databank.worldbank.org/home.aspx">databank.worldbank.org</a>.</p>
+<p>We obtained data on Gini coefficient and the human development index from the UNDP, you can find the information here at <a href="http://hdr.undp.org/en/data">hdr.undp.org</a>
 The actual download we used is a little difficult to find so the direct link is <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=2ahUKEwj92b7u7LDmAhWWVs0KHY5-Dy4QFjACegQIBRAC&amp;url=http%3A%2F%2Fhdr.undp.org%2Fsites%2Fdefault%2Ffiles%2F2018_all_indicators.xlsx&amp;usg=AOvVaw1X2alKbj6XdNRcUGJ_DD-E">here</a>
 Please note that this is a direct link to the download so only click on it if you would like to download a copy of the data.</p>
 <p>We pulled the most recent information we could find for each of these countries in an attempt to think about how colonization may have impacted what is going on in a country today. Of course the time period of colonization was extremely long and complicated, and about 70 years have passed since colonialism ended, so many other factors certainly have an impact. But this was the concept we were hoping to explore.</p>
@@ -153,8 +155,9 @@ Gini Coefficient: Measurement of inequality, the higher the value, the more uneq
 </div>
 <div id="colonial-transformation-dataset" class="section level2">
 <h2><span class="header-section-number">2.4</span> Colonial Transformation Dataset</h2>
-<p>Data can be found <a href="https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia">here</a></p>
-<p>This Dataset is a product of the Research from Ziltener, Patrick &amp; Künzler, Daniel &amp; Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683. It encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, “Colonial Rule” has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files.</p>
+<p><strong>Source :</strong>
+<a href="https://www.researchgate.net/publication/314156755_Measuring_the_Impacts_of_Colonialism_A_New_Data_Set_for_the_Countries_of_Africa_and_Asia">Research from Ziltener, Patrick &amp; Künzler, Daniel &amp; Walter, André. (2017). Measuring the Impacts of Colonialism: A New Data Set for the Countries of Africa and Asia. Journal of World-Systems Research. 23. 156-190. 10.5195/jwsr.2017.683.</a></p>
+<p>This Dataset encompasses 83 Asian and African countries and ranks them according to 15+ indicators in an effort to quantify the type of colonial domination they experienced. The indicators are divided between Political (with a sub-category on violence), Economic, and Social. This data is of a numerical/categorical hybrid nature, as they are numerical encoding of non-numerical (but gradual) realities. (For instance, “Colonial Rule” has been encoded on a scale of 0-5 from 0 for no colonial rule to 5 for direct rule and complete interference from foreign countries.) A summary of all those variables can be found in the github files under src.</p>
 <p><strong>Variables of the Colonial Transformations Data Set</strong></p>
 <pre><code>##  [1] &quot;Country.Code.World.Bank&quot;                                                         
 ##  [2] &quot;Country.Name&quot;                                                                    
